@@ -1,6 +1,0 @@
-stop,facility,city,state,median_days,lat,lon,people_on_path,people_no_record,people_departed,median_total_days
-1,BALTIMORE HOLD ROOM,Baltimore,MD,1.1,39.298,-76.6197,25,16,24,9.4
-2,CAROLINE DETENTION FACILITY,Bowling Green,VA,1.4,38.0316,-77.2634,25,16,24,9.4
-3,RICHMOND SUB-OFFICE HOLD,North Chesterfield,VA,0.3,37.3628,-77.6005,25,16,24,9.4
-4,WINN CORRECTIONAL CENTER,Winnfield,LA,3.5,31.9214,-92.6366,25,16,24,9.4
-5,ALEXANDRIA STAGING FACILITY,Alexandria,LA,0.9,31.2601,-92.4838,25,16,24,9.4

@@ -9,6 +9,11 @@ editor: visual
 
 This is our analysis of ICE records for Maryland.
 
+**Time periods.** The story uses two windows, and we say which one every time:
+
+- **January–July, 2025 vs. 2026** for the year-over-year growth. Same months in both years, and we stop at July because the records end Aug. 6.
+- **Since Jan. 20, 2025**, when President Donald Trump's second term began, through Aug. 6, 2026, for everything else: where ICE made arrests, who was arrested, the 287(g) ban, detention and departures.
+
 **The data.** ICE records released through a public records lawsuit and published by the Deportation Data Project (UC Berkeley and UCLA): <https://deportationdata.org/data/processed/ice.html>. We use the release of Aug. 24, 2026, which covers Oct. 1, 2022, through Aug. 6, 2026. The parquet files go in `data/raw/`:
 
 | File | One row is... |
@@ -37,7 +42,7 @@ options(width = 160)   # wide enough that tables don't hide columns
 Things we use over and over:
 
 ```{r}
-no_record_label <- "3 Other Immigration Violator"   # ICE: no criminal conviction, no pending charge
+no_record_label <- "3 Other Immigration Violator"   # ICE: no prior criminal conviction, no pending charge
 pending_label   <- "2 Pending Criminal Charges"
 convicted_label <- "1 Convicted Criminal"
 
@@ -108,7 +113,7 @@ md_all_rows |> count(duplicate_drop_row) |>
 
 We also add the columns we need later:
 
-- `no_record`: TRUE when ICE labeled the person "Other Immigration Violator" (no conviction, no pending charge)
+- `no_record`: TRUE when ICE labeled the person "Other Immigration Violator" (no prior conviction, no pending charge)
 - `route`: how ICE says the arrest happened, from its simplified method field
 - `custodial`: TRUE when a jail or prison handed the person to ICE ("Custodial Arrest," which includes the Criminal Alien Program, or "287(g) Program")
 - `ice_office`: arrested at one of ICE's two Baltimore offices
@@ -205,27 +210,30 @@ md_arrests |> filter(no_record, apprehension_date <= as.Date("2025-07-31")) |> n
 - The 2,952 no-record arrests involve **2,922** people.
 - From October 2022 through July 2025, there were **2,746** no-record arrests, fewer than the 2,952 in seven months of 2026.
 
+## 1.6 Since Trump took office (Jan. 20, 2025–Aug. 6, 2026)
+
+From here on, unless a section says January–July, we look at arrests since Jan. 20, 2025.
+
+```{r}
+md_trump <- md_arrests |> filter(apprehension_date >= inauguration)
+md_trump |> summarise(arrests = n(), people = n_distinct(unique_identifier, na.rm = TRUE),
+                      share_no_record = round(mean(no_record), 3), no_record = sum(no_record)) |>   # share first, before no_record becomes a count
+  show_all()
+```
+
+- **9,071** arrests of **8,970** people. **5,687** arrests (**62.7%**) were of people with no record.
+
 "No record" doesn't mean someone was in the country legally. How many already had a final removal order from an immigration judge?
 
 ```{r}
-md_arrests |>
-  filter(year == 2026, no_record) |>
+md_trump |>
+  filter(no_record) |>
   count(final_order_before_apprehension) |>
   mutate(share = round(n / sum(n), 3)) |>
   show_all()
 ```
 
-- **812** of 3,052 (**26.6%**) already had a final removal order before ICE arrested them.
-
-## 1.6 This year as a whole (Jan. 1–Aug. 6, 2026)
-
-```{r}
-md_this_year <- md_arrests |> filter(year == 2026)
-md_this_year |> summarise(arrests = n(), share_no_record = round(mean(no_record), 3)) |>
-  show_all()
-```
-
-- **4,317** arrests from Jan. 1 to Aug. 6, 2026. **70.7%** had no record.
+- **1,444** of 5,687 (**25.4%**) already had a final removal order before ICE arrested them.
 
 ## 1.7 Has the no-record share always been this high?
 
@@ -252,14 +260,14 @@ bind_rows(md_2025 |> mutate(period = "jan_jul_2025"), md_2026 |> mutate(period =
 
 - Custodial arrests: **626 → 515** (down 17.7%). Non-custodial arrests: **1,598 → 3,667** (up 130%).
 
-Does where someone is arrested match who they are? This year:
+Does where someone is arrested match who they are? Since Jan. 20, 2025:
 
 ```{r}
-md_this_year |> group_by(place) |> summarise(arrests = n(), share_no_record = round(mean(no_record), 3)) |>
+md_trump |> group_by(place) |> summarise(arrests = n(), share_no_record = round(mean(no_record), 3)) |>
   show_all()
 ```
 
-- Community arrests: **73.9%** no record (of 3,421). Handoffs from jails and prisons: **37.7%** (of 469). Arrests at ICE's offices: **81.5%** (of **427**).
+- Community arrests: **69.2%** no record (of 6,637). Handoffs from jails and prisons: **26.8%** (of 1,545). Arrests at ICE's offices: **76.5%** (of **889**).
 
 ## 1.9 Before and after the 287(g) ban
 
@@ -281,6 +289,16 @@ tibble(period = c("before ban", "after ban"),
 ```
 
 - Before the ban, **393** days; after, **171**.
+
+The monthly averages are for comparing. The counts themselves:
+
+```{r}
+tibble(period = c("before ban", "after ban"),
+       custody_transfers = c(sum(before_ban$route == "Transfer from custody"), sum(after_ban$route == "Transfer from custody"))) |>
+  show_all()
+```
+
+- **996** transfers from custody from Jan. 20, 2025, to Feb. 16, 2026, and **385** from Feb. 17 to Aug. 6, 2026.
 - Handoffs from custody: about **77 a month** before the ban, **69** after.
 - 287(g) was **4%** of arrests before the ban and **0.4%** after.
 - Overall arrests: **463** a month before, **550** after.
@@ -312,12 +330,13 @@ md_arrests <- md_arrests |>
             by = "apprehension_city_original") |>
   mutate(county = coalesce(county_from_landmark(event_landmark), city_county)) |>
   select(-city_county)
-md_this_year <- md_arrests |> filter(year == 2026)
+md_trump <- md_arrests |> filter(apprehension_date >= inauguration)   # again, now with counties
 
 round(mean(!is.na(md_arrests$county)), 3)
+round(mean(!is.na(md_trump$county)), 3)
 ```
 
-- **98.7%** of arrests can be placed in a county.
+- **98.7%** of all arrests can be placed in a county, and **99.5%** of arrests since Jan. 20, 2025.
 
 ## 1.11 287(g) arrests by county
 
@@ -336,32 +355,51 @@ g287 |> filter(apprehension_date >= as.Date("2026-03-01"), apprehension_date <= 
 
 ```{r}
 tibble(
-  share_of_2026_arrests = round(mean(md_this_year$county %in% eastern_shore), 3),
-  share_of_population = round(sum(county_pop$pop_2020[county_pop$county %in% eastern_shore]) / sum(county_pop$pop_2020), 3),
-  no_record_2024 = sum(md_arrests$no_record & md_arrests$year == 2024 & md_arrests$county %in% eastern_shore),
-  no_record_2026_through_aug6 = sum(md_this_year$no_record & md_this_year$county %in% eastern_shore)
+  arrests_since_jan20 = sum(md_trump$county %in% eastern_shore),
+  share_of_arrests_since_jan20 = round(mean(md_trump$county %in% eastern_shore), 3),
+  share_of_population = round(sum(county_pop$pop_2020[county_pop$county %in% eastern_shore]) / sum(county_pop$pop_2020), 3)
 ) |>
+  show_all()
+
+# md_2025 and md_2026 were made before we added counties, so we filter md_arrests again
+md_arrests |>
+  filter(county %in% eastern_shore, no_record, month(apprehension_date) <= 7, year %in% c(2025, 2026)) |>
+  count(year) |>
   show_all()
 ```
 
-- The Eastern Shore's nine counties have **7.4%** of Maryland's population but **25.7%** of 2026 arrests.
-- No-record arrests there: **64** in all of 2024, **751** in 2026 through Aug. 6.
+- The Eastern Shore's nine counties have **7.4%** of Maryland's population but **23%** (2,090) of ICE's Maryland arrests since Jan. 20, 2025.
+- No-record arrests there, January–July: **189** in 2025, **730** in 2026.
 
-Arrests per 10,000 residents in 2026, by county. We leave out arrests at ICE's offices, because people come to those from all over the state.
+Wicomico County has by far the highest rate, so we check what ICE wrote as the location there:
+
+```{r}
+md_trump |> filter(county == "Wicomico County") |> count(event_landmark, sort = TRUE) |> head(5) |>
+  show_all()
+md_trump |> filter(county == "Wicomico County") |> count(place) |>
+  show_all()
+md_trump |> filter(county == "Wicomico County") |> count(city_clean, sort = TRUE) |> head(5) |>
+  show_all()
+```
+
+- Most say "WCD General Area" (**857**), a general area, not an address. Almost all Wicomico arrests (**1,065** of 1,111) were made in the community, not handed over from the county jail. The county comes from the city ICE recorded, which was Salisbury for **913** of them.
+
+Arrests per 10,000 residents since Jan. 20, 2025, by county. We leave out arrests at ICE's offices, because people come to those from all over the state.
 
 ```{r}
 county_rates <- county_pop |>
-  left_join(md_this_year |> filter(!ice_office, !is.na(county)) |> group_by(county) |>
+  left_join(md_trump |> filter(!ice_office, !is.na(county)) |> group_by(county) |>
               summarise(arrests = n(), no_record = sum(no_record)), by = "county") |>
   left_join(md_arrests |> filter(year == 2024, !ice_office, !is.na(county)) |> group_by(county) |>
               summarise(no_record_2024 = sum(no_record)), by = "county") |>
   mutate(across(c(arrests, no_record, no_record_2024), \(x) coalesce(x, 0L)),
          per_10k = round(arrests / pop_2020 * 10000, 1))
-county_rates |> arrange(desc(per_10k)) |> select(county, arrests, per_10k) |> head(5) |>
+county_rates |> arrange(desc(per_10k)) |> select(county, arrests, per_10k) |> head(6) |>
   show_all()
+summary(county_rates$per_10k)
 ```
 
-- Highest rates: Worcester **50.7**, Wicomico **48.5**, Talbot **34.1** per 10,000 residents. These count everyone who lives in a county, not just immigrants, and Ocean City's summer crowds aren't in Worcester's census population.
+- Highest rates: Wicomico **107.3**, Worcester **74.0**, Talbot **47.4** per 10,000 residents. Then Dorchester **40.3**, Somerset **32.1** and Baltimore City **29.2**. These count everyone who lives in a county, not just immigrants.
 
 ICE's two Baltimore offices, by quarter:
 
@@ -372,16 +410,30 @@ offices |> show_all()
 
 - Arrests at the offices peaked at **281** in the first quarter of 2026.
 
-## 1.13 Citizenship (all records)
+On the map, in how many places did people with no record make up most of the arrests? We only look at places with at least 50 arrests since Jan. 20, 2025, so a handful of arrests doesn't count as a pattern.
 
 ```{r}
-md_arrests |> count(citizenship_country, sort = TRUE) |> mutate(share = round(n / sum(n), 3)) |> head(6) |>
+md_trump |>
+  filter(!is.na(city_clean), !ice_office) |>
+  group_by(city_clean) |>
+  summarise(arrests = n(), share_no_record = round(mean(no_record), 3)) |>
+  filter(arrests >= 50) |>
+  arrange(share_no_record) |>
   show_all()
-round(mean(md_arrests$citizenship_country %in% c("GUATEMALA", "EL SALVADOR", "HONDURAS", "MEXICO")), 3)
-n_distinct(md_arrests$citizenship_country, na.rm = TRUE)
 ```
 
-- Guatemala **3,208**, El Salvador **2,514**, Honduras **2,017**, Mexico **1,557**. Those four are **73.5%** of all arrests. **118** countries in all.
+- **28** places had at least 50 arrests (not counting ICE's offices). In **19** of them, most arrests were of people with no record. In the other nine, including Bel Air, Hagerstown, Towson, Rockville and Frederick, people with no record were less than half.
+
+## 1.13 Citizenship (since Jan. 20, 2025)
+
+```{r}
+md_trump |> count(citizenship_country, sort = TRUE) |> mutate(share = round(n / sum(n), 3)) |> head(6) |>
+  show_all()
+round(mean(md_trump$citizenship_country %in% c("GUATEMALA", "EL SALVADOR", "HONDURAS", "MEXICO")), 3)
+n_distinct(md_trump$citizenship_country, na.rm = TRUE)
+```
+
+- Guatemala **2,635**, El Salvador **1,849**, Honduras **1,414**, Mexico **1,181**. Those four are **78%** of arrests since Jan. 20, 2025. **104** countries in all.
 
 ## 1.14 The whole country, for comparison
 
@@ -434,13 +486,27 @@ us_custody |> show_all()
 
 - Nationally, custodial arrests rose **75.5%** (74,708 → 131,149) and non-custodial arrests rose **74.1%** (69,788 → 121,503). Both grew by about three-quarters. In Maryland, custodial arrests went down.
 
-States, ranked by no-record share (Jan.–July 2026). We only rank states with at least 1,000 arrests, so tiny numbers don't top the list. D.C. is out because it isn't a state.
+Since Jan. 20, 2025, nationally. The monthly counts above can't start mid-month, so we count by day inside the file again:
 
 ```{r}
-states <- us_2026 |>
+us_trump <- arrests_file |>
+  filter(!duplicate_drop_row, apprehension_date >= inauguration) |>
+  count(state = apprehension_state_filled_in, criminality = apprehension_criminality, name = "arrests") |>
+  collect()
+tibble(us_arrests = sum(us_trump$arrests),
+       share_no_record = round(sum(us_trump$arrests[us_trump$criminality %in% no_record_label]) / sum(us_trump$arrests), 3)) |>
+  show_all()
+```
+
+- **571,539** U.S. arrests since Jan. 20, 2025. **39.4%** were of people with no record, compared with **62.7%** in Maryland.
+
+States, ranked by no-record share since Jan. 20, 2025. We only rank states with at least 1,000 arrests, so tiny numbers don't top the list. D.C. is out because it isn't a state. (Puerto Rico is in the data's state field, so we note it if it shows up.)
+
+```{r}
+states <- us_trump |>
   filter(!is.na(state), state != "DISTRICT OF COLUMBIA") |>
   group_by(state) |>
-  summarise(no_record = sum(arrests[criminality == no_record_label]),   # before "arrests" gets overwritten
+  summarise(no_record = sum(arrests[criminality %in% no_record_label]),   # before "arrests" gets overwritten
             arrests = sum(arrests)) |>
   filter(arrests >= 1000) |>
   mutate(share_no_record = round(no_record / arrests, 4)) |>
@@ -449,7 +515,7 @@ nrow(states)
 head(states, 5) |> show_all()
 ```
 
-- **37** states had at least 1,000 arrests. New York **73.6%**, Maryland **70.59%**, West Virginia **70.57%**. Maryland and West Virginia are essentially tied after New York, so we shouldn't say Maryland "ranks second" on its own.
+- **43** places had at least 1,000 arrests. New York **68.3%**, West Virginia **64.4%**, Maryland **62.7%**. So Maryland had the third-highest share, after New York and West Virginia.
 
 ------------------------------------------------------------------------
 
@@ -508,6 +574,17 @@ tibble(facility_type = c("County jail", "State prison or state-run jail")) |>
 ```
 
 - County jails: about **142** a month before the ban, **118** after. State prisons and state-run jails: **29** before, **27** after.
+
+The counts behind those averages:
+
+```{r}
+tibble(facility_type = c("County jail", "State prison or state-run jail")) |>
+  mutate(before_ban = map_int(facility_type, \(t) sum(det_before$facility_type == t)),
+         after_ban  = map_int(facility_type, \(t) sum(det_after$facility_type == t))) |>
+  show_all()
+```
+
+- County jails: **1,837** before the ban, **664** after. State prisons and state-run jails: **368** before, **154** after.
 
 ## 2.3 How did the detainers end?
 
@@ -628,8 +705,10 @@ tibble(file = c("arrests file", "joined file"),
 - Arrests file: **7,536** departures, **316** to another country. Joined file: **7,611** departures, **308** to another country.
 - The difference comes from the files themselves, not from spelling. The joined file takes these fields from ICE's detention and removal records, so it has more departures, and some people have a different citizenship in each file. We use the joined file because it's linked to each person's detention record. It's about a 1% difference.
 
+That check uses all the records. For the story, we only count departures of people arrested since Jan. 20, 2025:
+
 ```{r}
-departed <- md_joined |> filter(!is.na(departed_date))
+departed <- md_joined |> filter(apprehension_date >= inauguration, !is.na(departed_date))
 departed$other <- other_country(departed)
 
 tibble(departures = nrow(departed),
@@ -637,12 +716,20 @@ tibble(departures = nrow(departed),
        of_those_to_mexico = sum(departed$other & departed$departure_country == "MEXICO"),
        of_those_no_record = sum(departed$other & departed$apprehension_criminality == no_record_label)) |>
   show_all()
+departed |> count(departure_country, sort = TRUE) |> head(5) |>
+  show_all()
 departed |> filter(other) |> count(citizenship_country, departure_country, sort = TRUE) |> head(8) |>
+  show_all()
+departed |> filter(other, departure_country == "MEXICO") |> count(citizenship_country, sort = TRUE) |>
+  show_all()
+departed |> filter(other, departure_country %in% c("GHANA", "SIERRA LEONE")) |> count(citizenship_country, departure_country) |>
   show_all()
 ```
 
-- **7,611** departures. **308** went to a country other than the person's own: **203** to Mexico, and **168** of the 308 had no record.
-- The most common pairs are El Salvador → Mexico (**65**), Guatemala → Mexico (**48**) and Honduras → Mexico (**42**). These are destinations as ICE recorded them. Mexico is often a country people crossed on the way north.
+- **6,084** departures of people arrested since Jan. 20, 2025. The most went to Guatemala (**1,840**), El Salvador (**1,188**), Mexico (**1,012**) and Honduras (**980**).
+- **271** went to a country other than the person's own: **191** to Mexico, and **154** of the 271 had no record.
+- Of the 191 sent to Mexico, most were Salvadorans (**59**), Guatemalans (**48**) and Hondurans (**39**), then Venezuelans (**23**) and Nicaraguans (**14**). Only **4** were Cuban.
+- A few West Africans were sent to other West African countries, such as **5** Nigerians to Ghana. These are destinations as ICE recorded them. Mexico is often a country people crossed on the way north.
 
 ------------------------------------------------------------------------
 
@@ -668,6 +755,7 @@ nrow(md_stints)
 ```{r}
 per_person <- md_stints |> group_by(stay_ID) |> summarise(facilities = n_distinct(detention_facility_code))
 tibble(median_facilities = median(per_person$facilities),
+       five_or_more = sum(per_person$facilities >= 5),
        share_5_or_more = round(mean(per_person$facilities >= 5), 3),
        held_in_louisiana = n_distinct(md_stints$stay_ID[md_stints$state == "LA"]),
        alexandria_staging = n_distinct(md_stints$stay_ID[md_stints$detention_facility == "ALEXANDRIA STAGING FACILITY"]),
@@ -677,7 +765,7 @@ md_stints |> group_by(detention_facility, state) |> summarise(people = n_distinc
   show_all()
 ```
 
-- Median: **3** different facilities per person. **19.3%** were held in five or more.
+- Median: **3** different facilities per person. **1,603** people (**19.3%**) were held in five or more.
 - **4,613** were held in Louisiana at some point. **1,905** passed through the Alexandria Staging Facility. **14** were held at Guantánamo Bay (state code CU).
 - The Baltimore hold room held **7,286** of them.
 
@@ -729,6 +817,19 @@ tibble(people = length(long_ids), no_record = sum(who$apprehension_criminality =
 - Median days at each stop: **1.1, 1.4, 0.3, 3.5, 0.9**. The whole trip took a median of **9.4** days.
 - **24** of the 25 left the country. **16** had no record. These are group numbers, so no one person's record is shown.
 
+How did they leave, and where did they go? `stay_release_reason` says why ICE ended the detention stay. We also compare the departure country with the citizenship country.
+
+```{r}
+route_people <- detained |> filter(stay_ID %in% long_ids) |> distinct(stay_ID, .keep_all = TRUE)
+route_people |> count(stay_release_reason) |>
+  show_all()
+route_people |> count(citizenship_country, departure_country, sort = TRUE) |>
+  show_all()
+```
+
+- ICE lists all **25** as "Removed," which means deported, not a voluntary departure.
+- The **24** with a departure date all went to their own country of citizenship: El Salvador **12**, Guatemala **6**, Ecuador **3**, Honduras **2**, Mexico **1**. The 25th, a Honduran citizen, is marked removed but has no departure date or country.
+
 ------------------------------------------------------------------------
 
 # Part 5: Save tables for the graphics
@@ -744,9 +845,9 @@ all_months <- tibble(month = sort(unique(na.omit(us_counts$month))))
 # growth bars: Maryland and U.S., Jan.-July 2025 vs. 2026
 md_growth |>
   left_join(us_growth, by = "apprehension_criminality") |>
-  mutate(category = case_when(apprehension_criminality == no_record_label ~ "No conviction or pending charge",
+  mutate(category = case_when(apprehension_criminality == no_record_label ~ "No prior conviction or pending charge",
                               apprehension_criminality == pending_label ~ "Pending criminal charge",
-                              apprehension_criminality == convicted_label ~ "Convicted of a crime")) |>
+                              apprehension_criminality == convicted_label ~ "Prior criminal conviction")) |>
   arrange(desc(apprehension_criminality)) |>
   select(category, md_2025, md_2026, md_change, us_2025, us_2026, us_change) |>
   write_csv("csv/growth.csv")
@@ -772,10 +873,10 @@ md_detainers |> count(month, facility_type) |>
   right_join(all_months, by = "month") |> mutate(across(-month, \(x) coalesce(x, 0L))) |> arrange(month) |>
   write_csv("csv/detainers.csv")
 
-# map: counties and cities, 2026
+# map: counties and cities, since Jan. 20, 2025
 write_csv(county_rates, "csv/counties.csv")
 most_common <- function(x) { x <- x[!is.na(x)]; if (length(x) == 0) NA_character_ else names(which.max(table(x))) }
-md_this_year |>
+md_trump |>
   filter(!is.na(city_clean) | ice_office) |>
   mutate(city_clean = if_else(ice_office, "ICE BALTIMORE OFFICES", city_clean)) |>
   group_by(city_clean) |>
@@ -807,7 +908,7 @@ stops |> filter(stay_ID %in% long_ids) |>
          people_departed = sum(who$departed), median_total_days = round(median(trip$days), 1)) |>
   write_csv("csv/route.csv")
 
-# where people were sent
+# where people were sent (people arrested since Jan. 20, 2025)
 departed |> filter(!is.na(departure_country)) |> group_by(departure_country) |>
   summarise(departures = n(), citizens_of_other_country = sum(other)) |> arrange(desc(departures)) |>
   write_csv("csv/destinations.csv")
