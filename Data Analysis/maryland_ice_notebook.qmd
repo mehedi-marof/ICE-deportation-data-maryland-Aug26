@@ -619,6 +619,26 @@ detainer_outcomes |>
 - Between Jan. 20, 2025, and the ban, **887** detainers ended with ICE taking custody. That's **65%** of the 1,365 with a recorded outcome. Before 2025 it was 42.2%.
 - After the ban: **132** of the 284 with an outcome (46.5%). But **70%** of post-ban detainers have no outcome yet, so we can't say the rate changed.
 
+For the story, we don't compare periods. All detainers since Jan. 20, 2025, together:
+
+```{r}
+detainer_outcomes |>
+  filter(detainer_date >= inauguration) |>
+  summarise(detainers = n(),
+            no_outcome_yet = sum(is.na(detainer_lift_reason)),
+            with_outcome = sum(!is.na(detainer_lift_reason)),
+            ice_took_custody = sum(detainer_lift_reason %in% "Booked into Detention"),
+            jail_declined = sum(detainer_lift_reason %in% "Detainer Declined by LEA")) |>
+  mutate(share_custody_of_resolved = round(ice_took_custody / with_outcome, 3),
+         share_declined_of_resolved = round(jail_declined / with_outcome, 3)) |>
+  show_all()
+```
+
+- **3,298** detainers since Jan. 20, 2025. **1,649** have a recorded outcome and **1,649** (half) don't yet.
+- Of those with an outcome, **1,019** (**61.8%**) ended with ICE taking custody and **210** (**12.7%**) were declined by the jail.
+
+
+
 ------------------------------------------------------------------------
 
 # Part 3: The joined arrests-and-detention file

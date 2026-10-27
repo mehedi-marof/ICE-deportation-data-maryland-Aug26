@@ -16,7 +16,13 @@ js/charts/          one file per chart
 data/               the tables the charts read (CSV)
 data/geo/           map shapes for Maryland, the U.S. and the world
 assets/             CNS logo
+Data Analysis/      the R notebook (maryland_ice_notebook.qmd), its output tables (csv/),
+                    lookup tables (data/lookups/) and the raw ICE files (data/raw/)
 ```
+
+The notebook writes every chart table to `Data Analysis/csv/`; the same files are copied to `data/` for the page.
+
+**Time periods.** Year-over-year comparisons use January–July 2025 vs. January–July 2026. Everything else covers Jan. 20, 2025, when President Donald Trump's second term began, through Aug. 6, 2026.
 
 | Chart | File | Data |
 |---|---|---|
