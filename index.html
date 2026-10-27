@@ -1,237 +1,485 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maryland ICE Arrests 2026</title>
-<meta name="description" content="ICE nearly doubled its arrests in Maryland in 2026. All of the growth came from people with no prior criminal conviction or pending charge. A Capital News Service data analysis.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Poppins:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/page.css">
-<link rel="stylesheet" href="css/charts.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
-<script type="module" src="js/main.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Maryland ICE Arrests</title>
+  <meta name="description"
+    content="ICE nearly doubled its arrests in Maryland in 2026. All of the growth came from people with no prior criminal conviction or pending charge. A Capital News Service data analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <script type="module" src="js/main.js"></script>
 </head>
+
 <body>
-<!-- The page:
+  <!-- The page:
      css/page.css     overall page design (type, columns, title screen, scrollytelling)
      css/charts.css   CNS chart frames, legends, buttons, tooltips
      js/main.js       loads data/*.csv and draws each chart from js/charts/*.js -->
 
-<header class="masthead">
-  <img src="assets/cns-logo.png" alt="Capital News Service">
-</header>
-<div class="progress" aria-hidden="true"></div>
+  <header class="masthead">
+    <img src="assets/cns-logo.png" alt="Capital News Service">
+  </header>
+  <div class="progress" aria-hidden="true"></div>
 
-<section class="title bleed" aria-label="Story title">
-  <canvas id="herodots" aria-hidden="true"></canvas>
-  <div class="panel">
-    <p class="kicker">Immigration enforcement</p>
-    <h1>ICE's arrests in Maryland nearly doubled this year. The growth is people with no criminal record</h1>
-    <p class="dek">ICE arrested nearly twice as many people in Maryland in the first seven months of 2026 as a year earlier. Arrests of people with no prior criminal conviction or pending charge tripled. Arrests of people with criminal records did not grow.</p>
-    <p class="byline">By <a href="https://cnsmaryland.org/author/mhm/"><b>Mehedi Marof</b></a></p>
-  </div>
-  <a class="cue" href="#story">Scroll to read<span aria-hidden="true">↓</span></a>
-</section>
-
-<main id="story">
-<div class="col" style="padding-top:56px">
-  <p class="lede">From January through July of this year, U.S. Immigration and Customs Enforcement made 2,952 arrests in Maryland of people with no prior criminal conviction and no pending criminal charge in its records. That is more than in the nearly three years from October 2022 through July 2025 combined.</p>
-  <p>ICE's arrests in Maryland nearly doubled over the past year, from 2,224 in the first seven months of 2025 to 4,182 in the same months of 2026. Arrests of people without records rose by 2,011, more than the overall increase of 1,958. Arrests of people with prior criminal convictions fell slightly, from 859 to 820, and arrests of people with pending charges edged down, from 424 to 410. Most of the growth came from arrests in communities, but Maryland's jails remained a steady route to ICE.</p>
-  <p>Capital News Service analyzed ICE arrest, detainer and detention records released by the <a href="https://deportationdata.org/data/processed/ice.html">Deportation Data Project</a>, a research group at the University of California, Berkeley, and UCLA that obtained them through a public records lawsuit. The records run from Oct. 1, 2022, through Aug. 6, 2026.</p>
-  <aside class="explainer">
-    <h3>What "no record" means</h3>
-    <p>ICE sorts the people it arrests by criminal history at the time of arrest: previously convicted of a crime, facing a pending criminal charge, or neither. ICE calls the last group "other immigration violators." They are accused of breaking civil immigration law, such as by entering without permission or overstaying a visa, but have no prior criminal conviction or charge in ICE's systems. It does not mean they were in the country legally. About 27% of the people with no record whom ICE arrested in Maryland this year already had a final order of removal from an immigration judge.</p>
-  </aside>
-</div>
-
-<figure class="chart-frame wide" id="f-growth">
-  <h3 class="chart-hed">Arrests of people with no record drove Maryland's increase</h3>
-  <p class="chart-chatter">ICE arrests in Maryland, January–July of each year, by criminal history at the time of arrest</p>
-  <div class="legend"><span><i style="background:var(--gray)"></i>Jan.–July 2025</span><span><i style="background:var(--ink)"></i>Jan.–July 2026</span></div>
-  <div class="viz" id="c-growth"></div>
-  <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/growth.csv">Get the data</a></span><span class="wordmark">Capital News Service</span></div>
-</figure>
-
-<div class="col">
-  <p>Arrests rose across the country too, but differently. Nationwide, ICE made 252,652 arrests from January through July, up 75% from a year earlier. Arrests of people without records rose the most, but arrests of people with pending charges also rose 64%, and arrests of people with prior convictions rose 19%. In Maryland, arrests of people with prior convictions or pending charges dipped slightly.</p>
-  <p>As a result, 71% of the people ICE arrested in Maryland this year had no record, compared with 43% nationwide. Among the 37 states with at least 1,000 ICE arrests, Maryland and West Virginia had the highest shares after New York.</p>
-  <p>That share has swung before. In late 2022 and early 2023, under President Joe Biden, most people ICE arrested in Maryland also had no record. By late 2024, the share had fallen to 17%. After President Donald Trump returned to office in January 2025, it rose almost every month, to a peak of 77% in February 2026. Since then it has stayed between about 62% and 72%.</p>
-  <p>Most people ICE arrests in Maryland are from Central America and Mexico. Across all the records, about 74% were citizens of Guatemala, El Salvador, Honduras or Mexico.</p>
-
-  <h2>Jails steady, streets surging</h2>
-  <p>ICE makes arrests in two main ways. In a custodial arrest, a jail or prison hands someone over to the agency. In a non-custodial arrest, agents find the person at home, at work, on the road or at an ICE office.</p>
-  <p>In Maryland, both routes stayed busy. Non-custodial arrests more than doubled, from 1,598 in the first seven months of 2025 to 3,667 in the same months of 2026. Custodial arrests kept flowing, dipping from 626 to 515. Nationwide, both kinds rose by about three-quarters.</p>
-</div>
-
-<figure class="chart-frame wide" id="f-custody">
-  <h3 class="chart-hed">How ICE made its arrests in Maryland</h3>
-  <p class="chart-chatter">ICE arrests in Maryland per month, January 2024–July 2026</p>
-  <div class="legend"><span><i class="line" style="background:var(--orange)"></i>Non-custodial: homes, workplaces, roadsides, ICE offices</span><span><i class="line" style="background:var(--purple)"></i>Custodial: handoffs from jails, prisons and 287(g)</span></div>
-  <div class="viz" id="c-custody"></div>
-  <p class="chart-note">Custodial arrests are those ICE coded as custodial arrests, including the Criminal Alien Program, plus 287(g) arrests. August 2026 is excluded because the month is incomplete.</p>
-  <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/custody.csv">Get the data</a></span><span class="wordmark">Capital News Service</span></div>
-</figure>
-
-<div class="col">
-  <p>How someone is arrested tracks closely with who is arrested. This year, 74% of ICE's community arrests in Maryland involved someone with no record.</p>
-
-  <h2>The jail pipeline is still running</h2>
-  <p>Maryland's jails and prisons remain a steady route into ICE custody. Even after the state banned 287(g) agreements in February, ICE recorded about 69 handoffs a month from jails, prisons and other custody, down only slightly from about 77 before the ban. And the pipeline does not only catch people with criminal records: 38% of the people handed to ICE from jails and prisons this year had no prior conviction or pending charge.</p>
-  <p>The ban closed one door. Before it, only Frederick, Harford and Cecil counties had "jail enforcement" agreements under the federal <a href="https://mgaleg.maryland.gov/2026RS/fnotes/bil_0005/sb0245.pdf">287(g) program</a>, which trains local jail officers to check inmates' immigration status. ICE credited those agreements with 478 arrests since October 2022, about 4% of its Maryland arrests in the 13 months before Gov. Wes Moore <a href="https://marylandmatters.org/2026/05/18/despite-threats-maryland-sheriffs-quickly-dropped-287g-agreements-with-ice/">signed a ban on the agreements</a> on Feb. 17. ICE recorded 11 such arrests from March through July.</p>
-  <p>The other doors stayed open. ICE keeps asking jails to hand people over through detainers. A detainer is ICE's written request that a jail or prison hold someone for up to 48 hours past their release, or tell the agency when they will be released, so agents can pick them up. It is a request, not an arrest. ICE lodged about 118 detainers a month at Maryland county jails after the ban, down from about 142 before it, and about 27 a month at state prisons and state-run jails, compared with 29.</p>
-</div>
-
-<figure class="chart-frame wide" id="f-287g">
-  <h3 class="chart-hed">287(g) arrests ended with the ban. Detainers did not</h3>
-  <p class="chart-chatter">Monthly, January 2024 to July 2026. Left: arrests ICE coded as made through 287(g) agreements, by county. Right: detainers, ICE's requests that a jail or prison hold someone or notify the agency before releasing them. A detainer is a request, not an arrest; it becomes an arrest only if ICE takes the person into custody.</p>
-  <div class="two-up">
-    <div><h4>287(g) arrests</h4><div class="legend"><span><i style="background:var(--orange)"></i>Frederick</span><span><i style="background:var(--blue)"></i>Harford</span><span><i style="background:var(--teal)"></i>Cecil</span><span><i style="background:var(--gray)"></i>Elsewhere or unknown</span></div><div class="viz" id="c-287g"></div></div>
-    <div><h4>Detainers: requests to hold or notify</h4><div class="legend"><span><i class="line" style="background:var(--blue)"></i>County jails</span><span><i class="line" style="background:var(--purple)"></i>State prisons and state-run jails</span><span><i class="line" style="background:var(--gray)"></i>Police, courts and federal</span></div><div class="viz" id="c-det"></div></div>
-  </div>
-  <p class="chart-note">Five counties with "warrant service" agreements (Allegany, Carroll, Garrett, St. Mary's and Washington) show almost no arrests coded 287(g); ICE appears to have recorded those as ordinary custodial arrests. Facility types were classified by CNS from ICE's facility names.</p>
-  <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/g287.csv">287(g) data</a> · <a href="data/detainers.csv">Detainer data</a></span><span class="wordmark">Capital News Service</span></div>
-</figure>
-
-<div class="col">
-  <p>Those requests usually work. In the 13 months before the ban, about 65% of the detainers with a recorded outcome ended with ICE taking the person into custody. Most detainers lodged since the ban have no recorded outcome yet, so the records cannot show whether that has changed, or whether the <a href="https://marylandmatters.org/2026/05/22/moore-will-let-community-trust-act-become-law-without-his-signature/">Community Trust Act</a>, a state law that took effect in May and limits how local jails respond to ICE, has made a difference. The U.S. Justice Department <a href="https://marylandmatters.org/2026/07/10/trump-administration-sues-the-state-over-passage-of-the-community-trust-act/">sued to block the law</a> in July. The records also do not explain why ICE's custodial arrests fell in Maryland while they rose nationwide.</p>
-
-  <h2>Where ICE made arrests</h2>
-</div>
-
-<section class="scrolly bleed immersive" id="sc-arrests" aria-label="Map of ICE arrests in Maryland, step by step">
-  <div class="sticky">
-    <h3 class="chart-hed" style="padding:0 16px">Where ICE made arrests in Maryland in 2026</h3>
-    <div class="viz" id="m-arrests"></div>
-    <div class="scale" id="sc-scale" style="opacity:0;transition:opacity .5s;padding:0 16px"></div>
-    <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">Arrests Jan. 1–Aug. 6, 2026, by the city ICE recorded. Source: ICE data via the Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof / CNS</b></span><span class="wordmark">Capital News Service</span></div>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0"><h4 class="card-hed">ICE made 4,317 arrests in Maryland through Aug. 6.</h4>
-      <p class="card-body">Each circle is a place ICE listed, sized by arrests, January through Aug. 6. They cluster around Baltimore, in the Washington suburbs and on the Eastern Shore.</p><div class="card-legend"><span><i style="background:#3a3a3a"></i>All arrests</span></div></div>
-    <div class="step" data-step="1"><h4 class="card-hed">Most had no criminal record.</h4>
-      <p class="card-body">About <b>71%</b> had no prior criminal conviction and no pending charge in ICE's records. They account for most arrests nearly everywhere on the map.</p><div class="card-legend"><span><i style="background:var(--red)"></i>No prior conviction or pending charge</span></div></div>
-    <div class="step" data-step="2"><h4 class="card-hed">Hundreds were arrested at ICE's own offices.</h4>
-      <p class="card-body">ICE made <b>427 arrests</b> at its Baltimore field office and at the office where immigrants under supervision report for check-ins. 82% had no record.</p><div class="card-legend"><span><i style="background:var(--rust)"></i>At ICE's offices</span></div></div>
-    <div class="step" data-step="3"><h4 class="card-hed">Most arrests happened in the community.</h4>
-      <p class="card-body">At homes, workplaces and roadsides. <b>74%</b> of those arrests involved someone with no record.</p><div class="card-legend"><span><i style="background:var(--orange)"></i>In the community</span></div></div>
-    <div class="step" data-step="4"><h4 class="card-hed">The Eastern Shore stands out.</h4>
-      <p class="card-body">Its nine counties, outlined, are home to about 7% of Marylanders but had <b>26%</b> of ICE's arrests this year. Rates are per resident, not per immigrant resident, and ICE runs a hold room in Salisbury.</p><div class="card-legend"><span><i style="background:#4d8fc7"></i>Arrests per 10,000 residents</span><span><i style="background:var(--ink)"></i>Eastern Shore</span></div></div>
-  </div>
-</section>
-
-<div class="col">
-  <p>The Eastern Shore saw the sharpest change. ICE arrested 64 people with no record in the Shore's nine counties in all of 2024, and 751 this year through Aug. 6. ICE runs a hold room in Salisbury, where 1,843 people arrested in Maryland since January 2025 were booked first. Arrest rates on the Shore are high, but they are measured against everyone who lives there, not just immigrants, and Ocean City's summer crowds inflate Worcester County's rate.</p>
-  <p>Some arrests happen at ICE's own Baltimore offices, including one where immigrants under supervision report for scheduled check-ins. Those arrests peaked at 281 in the first three months of 2026.</p>
-
-  <h2>After an arrest</h2>
-  <p>Many people first wait in a hold room at ICE's Baltimore field office. ICE's <a href="https://www.ice.gov/doclib/detention-standards/2019/2_5.pdf">detention standards</a> limit hold room stays to 12 hours, though the agency gave the Baltimore room a waiver, according to <a href="https://www.vanhollen.senate.gov/news/press-releases/van-hollen-alsobrooks-press-trump-administration-on-inhumane-conditions-for-detainees-at-ices-baltimore-field-office">Maryland's U.S. senators</a>. In 2023 and 2024, half the people booked there left within about six hours. Among those booked in January 2026, half stayed longer than 106 hours, more than four days.</p>
-  <p>On March 6, a federal judge <a href="https://www.wmar2news.com/news/region/baltimore-city/judge-baltimore-ice-hold-rooms-violated-fifth-amendment-orders-immediate-limits-on-detainees">ruled that conditions in the hold room violated detainees' constitutional rights</a> and limited how many people it could hold. Among people booked in July, half left within about six hours again.</p>
-</div>
-
-<figure class="chart-frame wide" id="f-hold">
-  <h3 class="chart-hed">Time held in ICE's Baltimore hold room</h3>
-  <p class="chart-chatter">Median hours spent in the hold room, by the month people were booked in. The dashed line marks the 12-hour limit in ICE's detention standards; Maryland's U.S. senators said ICE gave this room a waiver from it.</p>
-  <div class="viz" id="c-hold"></div>
-  <p class="chart-note">Only people whose first ICE detention stop was the Baltimore hold room, computed from ICE book-in and book-out times.</p>
-  <div class="chart-foot"><span class="chart-source">Source: ICE detention data obtained by the Deportation Data Project via FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/holdroom.csv">Get the data</a></span><span class="wordmark">Capital News Service</span></div>
-</figure>
-
-<div class="col">
-  <p>Maryland has no long-term immigration detention center, so most people are moved, often more than once. ICE detained 8,319 people arrested in Maryland from Jan. 20, 2025, through early August 2026. Its records place 14 of them at holding sites at Guantánamo Bay, Cuba.</p>
-</div>
-
-<section class="scrolly bleed immersive" id="sc-detention" aria-label="Map of detention facilities, step by step">
-  <div class="sticky">
-    <h3 class="chart-hed" style="padding:0 16px">Where people arrested in Maryland were held</h3>
-    <div class="viz" id="m-detention"></div>
-    <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">ICE facilities that held at least one person arrested in Maryland since Jan. 20, 2025, sized by people held; the paths are the most common overall and the most common five-stop route, with typical times, not one person's record. Source: ICE detention data via the Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof / CNS</b></span><span class="wordmark">Capital News Service</span></div>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0"><h4 class="card-hed">Almost everyone starts in a hold room.</h4>
-      <p class="card-body">Usually in <b>Baltimore</b>, which held 7,286 people arrested in Maryland, or <b>Salisbury</b>, where 1,843 were booked first.</p><div class="card-legend"><span><i style="background:var(--ink)"></i>Maryland facility</span></div></div>
-    <div class="step" data-step="1"><h4 class="card-hed">Then many are moved south.</h4>
-      <p class="card-body">More than half, <b>4,613 people</b>, were held at some point in Louisiana, including 1,905 who passed through the Alexandria Staging Facility, the airport hub ICE uses for deportation flights. About 90% spent the longest part of their detention outside Maryland.</p><div class="card-legend"><span><i style="background:var(--red)"></i>Facility outside Maryland</span></div></div>
-    <div class="step" data-step="2"><h4 class="card-hed">The most common trip was short.</h4>
-      <p class="card-body">360 people went from the Baltimore hold room straight to Richwood Correctional Center in Monroe, La., the single most common path. The typical person passed through 3 facilities.</p><div class="card-legend"><span><i style="background:var(--blue)"></i>Path</span></div></div>
-    <div class="step" data-step="3"><h4 class="card-hed">Some journeys were much longer.</h4>
-      <p class="card-body">About one in five people, 19%, were held in five or more different facilities. Here is the most common of those longer routes, followed by 25 people. It starts, like most, in the <b>Baltimore hold room</b>, typically for about a day.</p><div class="card-legend"><span><i style="background:var(--blue)"></i>The route, stop by stop</span></div></div>
-    <div class="step" data-step="4"><h4 class="card-hed">Stops 2 and 3: Virginia.</h4>
-      <p class="card-body">First the Caroline Detention Facility in Bowling Green, typically for about a day and a half, then ICE's Richmond hold room for a few hours before a long transfer.</p></div>
-    <div class="step" data-step="5"><h4 class="card-hed">Stop 4: Winn Correctional Center, Winnfield, La.</h4>
-      <p class="card-body">More than 1,000 miles from Baltimore. The longest stop on this path, typically about three and a half days.</p></div>
-    <div class="step" data-step="6"><h4 class="card-hed">Stop 5: the Alexandria Staging Facility.</h4>
-      <p class="card-body">The deportation-flight hub. The whole trip typically took about <b>9.4 days</b>. 24 of the 25 left the country, nearly all to their own; 16 had no criminal record.</p></div>
-  </div>
-</section>
-
-<div class="col">
-  <p>Most of these cases ended with the person leaving the country. Of the 2,635 people with no record whom ICE arrested in Maryland from Jan. 20 through December 2025, about 77% had left by early August, through deportation or voluntary departure. About 14% had been released, and 4% were still detained.</p>
-</div>
-
-<section class="scrolly bleed immersive globe" id="sc-globe" aria-label="Globe of deportation destinations, step by step">
-  <div class="sticky">
-    <h3 class="chart-hed" style="padding:0 16px">Where people arrested in Maryland were sent</h3>
-    <div class="viz" id="m-globe"></div>
-    <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">Recorded departures, October 2022–August 2026. Circles sit at the center of each country, not the arrival point. Source: ICE data via the Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof / CNS</b> · <a href="data/destinations.csv">Destinations</a> · <a href="data/routes.csv">Routes</a></span><span class="wordmark">Capital News Service</span></div>
-  </div>
-  <div class="steps">
-    <div class="step" data-step="0"><h4 class="card-hed">Most were sent to their own countries.</h4>
-      <p class="card-body">Guatemala, El Salvador, Mexico and Honduras received the most. Circles are sized by recorded departures.</p><div class="card-legend"><span><i style="background:#1979b9"></i>Destination country</span></div></div>
-    <div class="step" data-step="1"><h4 class="card-hed">308 went somewhere else.</h4>
-      <p class="card-body">They were sent to a country other than the one ICE lists as their citizenship. 203 went to Mexico, mostly Central Americans, Venezuelans and Cubans; 168 of the 308 had no criminal record. Mexico is often a country people crossed on the way north, so "another country" isn't always a place they'd never been.</p><div class="card-legend globe-legend"></div></div>
-    <div class="step" data-step="2"><h4 class="card-hed">A few crossed an ocean.</h4>
-      <p class="card-body">A handful of West Africans were sent to neighboring countries, such as Nigerians sent to Ghana. Destinations are as ICE recorded them, which can be where a flight landed rather than where someone settled.</p><div class="card-legend globe-legend"></div></div>
-  </div>
-</section>
-
-<div class="col">
-  <p>The records end in early August, too soon to measure the Community Trust Act. The next release from the Deportation Data Project should show whether ICE's arrests from Maryland jails kept falling, and whether its arrests in communities kept rising.</p>
-  <div class="limits">
-    <h3>What the records can't tell us</h3>
-    <ul>
-      <li><b>Why ICE arrested someone.</b> The records show criminal history and how an arrest happened, not the reason for it.</li>
-      <li><b>A complete criminal history.</b> "No record" reflects ICE's systems at the time of arrest, which can be incomplete.</li>
-      <li><b>Exact locations.</b> ICE often records a general area rather than an address. CNS placed arrests by the city or county ICE listed.</li>
-      <li><b>Final counts for recent months.</b> ICE updates its records over time, and the latest months may grow.</li>
-      <li><b>Every 287(g) arrest.</b> Only arrests ICE itself coded as 287(g) are counted as such.</li>
-    </ul>
-  </div>
-  <section class="methods">
-    <h2>How we did this analysis</h2>
-
-    <h3>The records</h3>
-    <p>This analysis uses U.S. Immigration and Customs Enforcement records that the Deportation Data Project, a research group at the University of California, Berkeley, and UCLA, obtained through <a href="https://deportationdata.org/foia.html">Freedom of Information Act lawsuits</a> and published on its <a href="https://deportationdata.org/data/processed/ice.html">data page</a>. We used the project's release of Aug. 24, 2026, which covers Oct. 1, 2022, through Aug. 6, 2026, and four of its files: arrests, detainers, arrests linked to detention stays, and detention stints. In every file, we removed rows the project flags as likely duplicates, using its <code>duplicate_drop_row</code> column.</p>
-
-    <h3>Arrests</h3>
-    <p>In the arrests file, each row is one ICE arrest. We counted an arrest as a Maryland arrest when the project's <code>apprehension_state_filled_in</code> column says Maryland. That column uses the state ICE recorded and, when ICE left it blank, fills it in from the arrest location; it identifies 12,859 Maryland rows, 214 more than ICE's own state field. After removing 218 likely duplicates, 12,641 arrests remained. Some people were arrested more than once, and 28 rows have no person identifier (<code>unique_identifier</code>), so the story counts arrests rather than people. Each dot on the title screen is one Maryland arrest from January through July 2026: 2,952 red dots for people with no prior conviction or pending charge, and 1,230 gray dots for people with a prior conviction or a pending charge.</p>
-    <p>Criminal history comes from <code>apprehension_criminality</code>, which records what ICE's systems showed at the time of arrest: "Convicted Criminal," "Pending Criminal Charges" or "Other Immigration Violator." The story calls the last group people with no prior conviction or pending charge. Whether a person already had a final order of removal comes from <code>final_order_before_apprehension</code>.</p>
-    <p>How an arrest happened comes from <code>apprehension_method_simple</code>. We treated "Custodial Arrest," which includes ICE's Criminal Alien Program, and "287(g) Program" as custodial arrests, meaning a jail or prison handed the person to ICE. All other arrests, mostly those ICE codes "At-Large Arrest," are non-custodial. Arrests at ICE's two Baltimore offices were identified from <code>event_landmark</code>, where ICE lists them as "NON DETAINED ENCOUNTERS AT BAL ERO" and "BALTIMORE ISAP OFFICE."</p>
-    <p>Year-over-year comparisons use Jan. 1 through July 31 of each year, because the records end Aug. 6. Figures described as "this year" cover Jan. 1 through Aug. 6, 2026. Comparisons around Maryland's 287(g) ban are monthly averages over periods of different lengths, Jan. 20, 2025, through Feb. 16, 2026 (393 days), and Feb. 17 through Aug. 6, 2026 (171 days): each count was divided by the number of days and multiplied by 30.4375, the average length of a month. National figures come from the same file, using all states. The state comparison includes the 37 states with at least 1,000 arrests from January through July 2026 and leaves out the District of Columbia.</p>
-
-    <h3>Places</h3>
-    <p>To place arrests in counties, we first checked whether <code>event_landmark</code> names a county or Baltimore City. If it did not, we used the city ICE recorded in <code>apprehension_city_original</code>, matched to a county through a lookup table CNS built from every spelling in the data. Most spellings matched a ZIP code directory directly; others were corrected by hand or matched to the closest valid spelling, and a few could not be placed. In all, 98.7% of arrests were assigned a county. Arrest rates use 2020 census populations from the Maryland Department of Planning and leave out arrests at ICE's Baltimore offices, which people come to from across the state. The Eastern Shore includes Caroline, Cecil, Dorchester, Kent, Queen Anne's, Somerset, Talbot, Wicomico and Worcester counties. Map circles are placed at the center of each city.</p>
-
-    <h3>Detainers</h3>
-    <p>In the detainers file, each row is one detainer: a request from ICE that a jail or prison hold a person or notify the agency before releasing them. We kept detainers sent to facilities in Maryland (<code>facility_state</code>) and dated them by <code>detainer_prepare_date</code>. ICE does not say what kind of facility each one is, so CNS sorted the names in <code>detention_facility</code> into county jails, state prisons and state-run jails, federal custody, police or courts, and ICE offices, using keywords in the names. How a detainer ended comes from <code>detainer_lift_reason</code>; "Booked into Detention" means ICE took the person into custody. Detainers closed as duplicates or replaced by a new form were left out of those outcome shares.</p>
-
-    <h3>Detention and departures</h3>
-    <p>The project's file linking arrests to detention has one row per arrest, with the person's ICE detention stay attached. Hold room times come from <code>book_in_date_time_first</code> and <code>book_out_date_time_first</code> for people whose first stop (<code>detention_facility_first</code>) was the Baltimore hold room: the hours between the two, summarized as a monthly median by the month of book-in, in Eastern time. People detained since Jan. 20, 2025, are those with <code>has_detention_stay</code>; where they spent the longest part of their detention comes from <code>detention_facility_state_longest</code>. A recorded departure from the country is a non-missing <code>departed_date</code>, which includes removals and voluntary departures. Release and continued detention come from <code>stay_release_reason_simple</code>.</p>
-    <p>A person was counted as sent to a country other than their own when <code>departure_country</code> differs from <code>citizenship_country</code>; one record listing "KOREA" and "SOUTH KOREA" was treated as the same country. These fields come from this linked file, which draws on ICE's detention and removal records; the arrests file records slightly fewer departures (7,536 compared with 7,611). Globe circles are placed at the center of each country, not the arrival point.</p>
-
-    <h3>Facilities and paths</h3>
-    <p>In the detention stints file, each row is one stop at one facility within a person's detention stay. We kept the stops for the stays above, matched on <code>stay_ID</code>. The number of facilities a person passed through counts distinct <code>detention_facility_code</code> values; time in Louisiana and at Guantánamo Bay comes from the <code>state</code> column, where ICE codes Guantánamo as "CU." To trace paths, we put each person's stops in order of <code>book_in_date_time</code> and merged back-to-back stops at the same facility. The map shows the single most common path, followed by 360 people, and the most common path with five stops, followed by 25. Facilities are placed at the center of the city where they are located. Times on that route are medians for the group, measured from <code>book_in_date_time</code> to <code>book_out_date_time</code>; no individual's record is shown. Paths for people still detained when the records end may be incomplete.</p>
-
-    <h3>Reproducibility</h3>
-    <p>The analysis was done in R. The notebook, which runs every step above from the original files, and the tables behind each chart are available in the story's GitHub repository. Each chart on this page reads its own table from the page's <code>data</code> folder.</p>
+  <section class="title bleed" aria-label="Story title">
+    <canvas id="herodots" aria-hidden="true"></canvas>
+    <div class="panel">
+      <p class="kicker">Immigration enforcement</p>
+      <h1>ICE's arrests in Maryland nearly doubled this year. The growth is people with no criminal record</h1>
+      <p class="dek">ICE arrested nearly twice as many people in Maryland in the first seven months of 2026 as a year
+        earlier. Arrests of people with no prior criminal conviction or pending charge tripled. Arrests of people with
+        criminal records did not grow.</p>
+      <p class="byline">By <a href="https://cnsmaryland.org/author/mhm/"><b>Mehedi Marof</b></a></p>
+    </div>
+    <a class="cue" href="#story">Scroll to read<span aria-hidden="true">↓</span></a>
   </section>
-</div>
-</main>
 
-<footer class="site-foot">
-  <img src="assets/cns-logo.png" alt="Capital News Service">
-  <span>Capital News Service · Philip Merrill College of Journalism, University of Maryland</span>
-</footer>
+  <main id="story">
+    <div class="col" style="padding-top:56px">
+      <p class="lede">From January through July of this year, U.S. Immigration and Customs Enforcement made 2,952
+        arrests in Maryland of people with no prior criminal conviction and no pending criminal charge in its records.
+        That is more than in the nearly three years from October 2022 through July 2025 combined.</p>
+      <p>ICE's arrests in Maryland nearly doubled over the past year, from 2,224 in the first seven months of 2025 to
+        4,182 in the same months of 2026. Arrests of people without records rose by 2,011, more than the overall
+        increase of 1,958. Arrests of people with prior criminal convictions fell slightly, from 859 to 820, and arrests
+        of people with pending charges edged down, from 424 to 410. Most of the growth came from arrests in communities,
+        but Maryland's jails remained a steady route to ICE.</p>
+      <p>Capital News Service analyzed ICE arrest, detainer and detention records released by the <a
+          href="https://deportationdata.org/data/processed/ice.html">Deportation Data Project</a>, a research group at
+        the University of California, Berkeley, and UCLA that obtained them through a public records lawsuit. The
+        records run from Oct. 1, 2022, through Aug. 6, 2026.</p>
+      <aside class="explainer">
+        <h3>What "no record" means</h3>
+        <p>ICE sorts the people it arrests by criminal history at the time of arrest: previously convicted of a crime,
+          facing a pending criminal charge, or neither. ICE calls the last group "other immigration violators." They are
+          accused of breaking civil immigration law, such as by entering without permission or overstaying a visa, but
+          have no prior criminal conviction or charge in ICE's systems. It does not mean they were in the country
+          legally. About 27% of the people with no record whom ICE arrested in Maryland this year already had a final
+          order of removal from an immigration judge.</p>
+      </aside>
+    </div>
+
+    <figure class="chart-frame wide" id="f-growth">
+      <h3 class="chart-hed">Arrests of people with no record drove Maryland's increase</h3>
+      <p class="chart-chatter">ICE arrests in Maryland, January–July of each year, by criminal history at the time of
+        arrest</p>
+      <div class="legend"><span><i style="background:var(--gray)"></i>Jan.–July 2025</span><span><i
+            style="background:var(--ink)"></i>Jan.–July 2026</span></div>
+      <div class="viz" id="c-growth"></div>
+      <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via
+          FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/growth.csv">Get the
+            data</a></span><span class="wordmark">Capital News Service</span></div>
+    </figure>
+
+    <div class="col">
+      <p>Arrests rose across the country too, but differently. Nationwide, ICE made 252,652 arrests from January through
+        July, up 75% from a year earlier. Arrests of people without records rose the most, but arrests of people with
+        pending charges also rose 64%, and arrests of people with prior convictions rose 19%. In Maryland, arrests of
+        people with prior convictions or pending charges dipped slightly.</p>
+      <p>As a result, 71% of the people ICE arrested in Maryland this year had no record, compared with 43% nationwide.
+        Among the 37 states with at least 1,000 ICE arrests, Maryland and West Virginia had the highest shares after New
+        York.</p>
+      <p>That share has swung before. In late 2022 and early 2023, under President Joe Biden, most people ICE arrested
+        in Maryland also had no record. By late 2024, the share had fallen to 17%. After President Donald Trump returned
+        to office in January 2025, it rose almost every month, to a peak of 77% in February 2026. Since then it has
+        stayed between about 62% and 72%.</p>
+      <p>Most people ICE arrests in Maryland are from Central America and Mexico. Across all the records, about 74% were
+        citizens of Guatemala, El Salvador, Honduras or Mexico.</p>
+
+      <h2>Jails steady, streets surging</h2>
+      <p>ICE makes arrests in two main ways. In a custodial arrest, a jail or prison hands someone over to the agency.
+        In a non-custodial arrest, agents find the person at home, at work, on the road or at an ICE office.</p>
+      <p>In Maryland, both routes stayed busy. Non-custodial arrests more than doubled, from 1,598 in the first seven
+        months of 2025 to 3,667 in the same months of 2026. Custodial arrests kept flowing, dipping from 626 to 515.
+        Nationwide, both kinds rose by about three-quarters.</p>
+    </div>
+
+    <figure class="chart-frame wide" id="f-custody">
+      <h3 class="chart-hed">How ICE made its arrests in Maryland</h3>
+      <p class="chart-chatter">ICE arrests in Maryland per month, January 2024–July 2026</p>
+      <div class="legend"><span><i class="line" style="background:var(--orange)"></i>Non-custodial: homes, workplaces,
+          roadsides, ICE offices</span><span><i class="line" style="background:var(--purple)"></i>Custodial: handoffs
+          from jails, prisons and 287(g)</span></div>
+      <div class="viz" id="c-custody"></div>
+      <p class="chart-note">Custodial arrests are those ICE coded as custodial arrests, including the Criminal Alien
+        Program, plus 287(g) arrests. August 2026 is excluded because the month is incomplete.</p>
+      <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via
+          FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/custody.csv">Get the
+            data</a></span><span class="wordmark">Capital News Service</span></div>
+    </figure>
+
+    <div class="col">
+      <p>How someone is arrested tracks closely with who is arrested. This year, 74% of ICE's community arrests in
+        Maryland involved someone with no record.</p>
+
+      <h2>The jail pipeline is still running</h2>
+      <p>Maryland's jails and prisons remain a steady route into ICE custody. Even after the state banned 287(g)
+        agreements in February, ICE recorded about 69 handoffs a month from jails, prisons and other custody, down only
+        slightly from about 77 before the ban. And the pipeline does not only catch people with criminal records: 38% of
+        the people handed to ICE from jails and prisons this year had no prior conviction or pending charge.</p>
+      <p>The ban closed one door. Before it, only Frederick, Harford and Cecil counties had "jail enforcement"
+        agreements under the federal <a href="https://mgaleg.maryland.gov/2026RS/fnotes/bil_0005/sb0245.pdf">287(g)
+          program</a>, which trains local jail officers to check inmates' immigration status. ICE credited those
+        agreements with 478 arrests since October 2022, about 4% of its Maryland arrests in the 13 months before Gov.
+        Wes Moore <a
+          href="https://marylandmatters.org/2026/05/18/despite-threats-maryland-sheriffs-quickly-dropped-287g-agreements-with-ice/">signed
+          a ban on the agreements</a> on Feb. 17. ICE recorded 11 such arrests from March through July.</p>
+      <p>The other doors stayed open. ICE keeps asking jails to hand people over through detainers. A detainer is ICE's
+        written request that a jail or prison hold someone for up to 48 hours past their release, or tell the agency
+        when they will be released, so agents can pick them up. It is a request, not an arrest. ICE lodged about 118
+        detainers a month at Maryland county jails after the ban, down from about 142 before it, and about 27 a month at
+        state prisons and state-run jails, compared with 29.</p>
+    </div>
+
+    <figure class="chart-frame wide" id="f-287g">
+      <h3 class="chart-hed">287(g) arrests ended with the ban. Detainers did not</h3>
+      <p class="chart-chatter">Monthly, January 2024 to July 2026. Left: arrests ICE coded as made through 287(g)
+        agreements, by county. Right: detainers, ICE's requests that a jail or prison hold someone or notify the agency
+        before releasing them. A detainer is a request, not an arrest; it becomes an arrest only if ICE takes the person
+        into custody.</p>
+      <div class="two-up">
+        <div>
+          <h4>287(g) arrests</h4>
+          <div class="legend"><span><i style="background:var(--orange)"></i>Frederick</span><span><i
+                style="background:var(--blue)"></i>Harford</span><span><i
+                style="background:var(--teal)"></i>Cecil</span><span><i style="background:var(--gray)"></i>Elsewhere or
+              unknown</span></div>
+          <div class="viz" id="c-287g"></div>
+        </div>
+        <div>
+          <h4>Detainers: requests to hold or notify</h4>
+          <div class="legend"><span><i class="line" style="background:var(--blue)"></i>County jails</span><span><i
+                class="line" style="background:var(--purple)"></i>State prisons and state-run jails</span><span><i
+                class="line" style="background:var(--gray)"></i>Police, courts and federal</span></div>
+          <div class="viz" id="c-det"></div>
+        </div>
+      </div>
+      <p class="chart-note">Five counties with "warrant service" agreements (Allegany, Carroll, Garrett, St. Mary's and
+        Washington) show almost no arrests coded 287(g); ICE appears to have recorded those as ordinary custodial
+        arrests. Facility types were classified by CNS from ICE's facility names.</p>
+      <div class="chart-foot"><span class="chart-source">Source: ICE data obtained by the Deportation Data Project via
+          FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a href="data/g287.csv">287(g)
+            data</a> · <a href="data/detainers.csv">Detainer data</a></span><span class="wordmark">Capital News
+          Service</span></div>
+    </figure>
+
+    <div class="col">
+      <p>Those requests usually work. In the 13 months before the ban, about 65% of the detainers with a recorded
+        outcome ended with ICE taking the person into custody. Most detainers lodged since the ban have no recorded
+        outcome yet, so the records cannot show whether that has changed, or whether the <a
+          href="https://marylandmatters.org/2026/05/22/moore-will-let-community-trust-act-become-law-without-his-signature/">Community
+          Trust Act</a>, a state law that took effect in May and limits how local jails respond to ICE, has made a
+        difference. The U.S. Justice Department <a
+          href="https://marylandmatters.org/2026/07/10/trump-administration-sues-the-state-over-passage-of-the-community-trust-act/">sued
+          to block the law</a> in July. The records also do not explain why ICE's custodial arrests fell in Maryland
+        while they rose nationwide.</p>
+
+      <h2>Where ICE made arrests</h2>
+    </div>
+
+    <section class="scrolly bleed immersive" id="sc-arrests" aria-label="Map of ICE arrests in Maryland, step by step">
+      <div class="sticky">
+        <h3 class="chart-hed" style="padding:0 16px">Where ICE made arrests in Maryland in 2026</h3>
+        <div class="viz" id="m-arrests"></div>
+        <div class="scale" id="sc-scale" style="opacity:0;transition:opacity .5s;padding:0 16px"></div>
+        <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">Arrests Jan. 1–Aug. 6, 2026, by the
+            city ICE recorded. Source: ICE data via the Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof /
+              CNS</b></span><span class="wordmark">Capital News Service</span></div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h4 class="card-hed">ICE made 4,317 arrests in Maryland through Aug. 6.</h4>
+          <p class="card-body">Each circle is a place ICE listed, sized by arrests, January through Aug. 6. They cluster
+            around Baltimore, in the Washington suburbs and on the Eastern Shore.</p>
+          <div class="card-legend"><span><i style="background:#3a3a3a"></i>All arrests</span></div>
+        </div>
+        <div class="step" data-step="1">
+          <h4 class="card-hed">Most had no criminal record.</h4>
+          <p class="card-body">About <b>71%</b> had no prior criminal conviction and no pending charge in ICE's records.
+            They account for most arrests nearly everywhere on the map.</p>
+          <div class="card-legend"><span><i style="background:var(--red)"></i>No prior conviction or pending
+              charge</span></div>
+        </div>
+        <div class="step" data-step="2">
+          <h4 class="card-hed">Hundreds were arrested at ICE's own offices.</h4>
+          <p class="card-body">ICE made <b>427 arrests</b> at its Baltimore field office and at the office where
+            immigrants under supervision report for check-ins. 82% had no record.</p>
+          <div class="card-legend"><span><i style="background:var(--rust)"></i>At ICE's offices</span></div>
+        </div>
+        <div class="step" data-step="3">
+          <h4 class="card-hed">Most arrests happened in the community.</h4>
+          <p class="card-body">At homes, workplaces and roadsides. <b>74%</b> of those arrests involved someone with no
+            record.</p>
+          <div class="card-legend"><span><i style="background:var(--orange)"></i>In the community</span></div>
+        </div>
+        <div class="step" data-step="4">
+          <h4 class="card-hed">The Eastern Shore stands out.</h4>
+          <p class="card-body">Its nine counties, outlined, are home to about 7% of Marylanders but had <b>26%</b> of
+            ICE's arrests this year. Rates are per resident, not per immigrant resident, and ICE runs a hold room in
+            Salisbury.</p>
+          <div class="card-legend"><span><i style="background:#4d8fc7"></i>Arrests per 10,000 residents</span><span><i
+                style="background:var(--ink)"></i>Eastern Shore</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="col">
+      <p>The Eastern Shore saw the sharpest change. ICE arrested 64 people with no record in the Shore's nine counties
+        in all of 2024, and 751 this year through Aug. 6. ICE runs a hold room in Salisbury, where 1,843 people arrested
+        in Maryland since January 2025 were booked first. Arrest rates on the Shore are high, but they are measured
+        against everyone who lives there, not just immigrants, and Ocean City's summer crowds inflate Worcester County's
+        rate.</p>
+      <p>Some arrests happen at ICE's own Baltimore offices, including one where immigrants under supervision report for
+        scheduled check-ins. Those arrests peaked at 281 in the first three months of 2026.</p>
+
+      <h2>After an arrest</h2>
+      <p>Many people first wait in a hold room at ICE's Baltimore field office. ICE's <a
+          href="https://www.ice.gov/doclib/detention-standards/2019/2_5.pdf">detention standards</a> limit hold room
+        stays to 12 hours, though the agency gave the Baltimore room a waiver, according to <a
+          href="https://www.vanhollen.senate.gov/news/press-releases/van-hollen-alsobrooks-press-trump-administration-on-inhumane-conditions-for-detainees-at-ices-baltimore-field-office">Maryland's
+          U.S. senators</a>. In 2023 and 2024, half the people booked there left within about six hours. Among those
+        booked in January 2026, half stayed longer than 106 hours, more than four days.</p>
+      <p>On March 6, a federal judge <a
+          href="https://www.wmar2news.com/news/region/baltimore-city/judge-baltimore-ice-hold-rooms-violated-fifth-amendment-orders-immediate-limits-on-detainees">ruled
+          that conditions in the hold room violated detainees' constitutional rights</a> and limited how many people it
+        could hold. Among people booked in July, half left within about six hours again.</p>
+    </div>
+
+    <figure class="chart-frame wide" id="f-hold">
+      <h3 class="chart-hed">Time held in ICE's Baltimore hold room</h3>
+      <p class="chart-chatter">Median hours spent in the hold room, by the month people were booked in. The dashed line
+        marks the 12-hour limit in ICE's detention standards; Maryland's U.S. senators said ICE gave this room a waiver
+        from it.</p>
+      <div class="viz" id="c-hold"></div>
+      <p class="chart-note">Only people whose first ICE detention stop was the Baltimore hold room, computed from ICE
+        book-in and book-out times.</p>
+      <div class="chart-foot"><span class="chart-source">Source: ICE detention data obtained by the Deportation Data
+          Project via FOIA; CNS analysis. <b>Chart: Mehedi Marof / Capital News Service</b> · <a
+            href="data/holdroom.csv">Get the data</a></span><span class="wordmark">Capital News Service</span></div>
+    </figure>
+
+    <div class="col">
+      <p>Maryland has no long-term immigration detention center, so most people are moved, often more than once. ICE
+        detained 8,319 people arrested in Maryland from Jan. 20, 2025, through early August 2026. Its records place 14
+        of them at holding sites at Guantánamo Bay, Cuba.</p>
+    </div>
+
+    <section class="scrolly bleed immersive" id="sc-detention" aria-label="Map of detention facilities, step by step">
+      <div class="sticky">
+        <h3 class="chart-hed" style="padding:0 16px">Where people arrested in Maryland were held</h3>
+        <div class="viz" id="m-detention"></div>
+        <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">ICE facilities that held at least
+            one person arrested in Maryland since Jan. 20, 2025, sized by people held; the paths are the most common
+            overall and the most common five-stop route, with typical times, not one person's record. Source: ICE
+            detention data via the Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof / CNS</b></span><span
+            class="wordmark">Capital News Service</span></div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h4 class="card-hed">Almost everyone starts in a hold room.</h4>
+          <p class="card-body">Usually in <b>Baltimore</b>, which held 7,286 people arrested in Maryland, or
+            <b>Salisbury</b>, where 1,843 were booked first.
+          </p>
+          <div class="card-legend"><span><i style="background:var(--ink)"></i>Maryland facility</span></div>
+        </div>
+        <div class="step" data-step="1">
+          <h4 class="card-hed">Then many are moved south.</h4>
+          <p class="card-body">More than half, <b>4,613 people</b>, were held at some point in Louisiana, including
+            1,905 who passed through the Alexandria Staging Facility, the airport hub ICE uses for deportation flights.
+            About 90% spent the longest part of their detention outside Maryland.</p>
+          <div class="card-legend"><span><i style="background:var(--red)"></i>Facility outside Maryland</span></div>
+        </div>
+        <div class="step" data-step="2">
+          <h4 class="card-hed">The most common trip was short.</h4>
+          <p class="card-body">360 people went from the Baltimore hold room straight to Richwood Correctional Center in
+            Monroe, La., the single most common path. The typical person passed through 3 facilities.</p>
+          <div class="card-legend"><span><i style="background:var(--blue)"></i>Path</span></div>
+        </div>
+        <div class="step" data-step="3">
+          <h4 class="card-hed">Some journeys were much longer.</h4>
+          <p class="card-body">About one in five people, 19%, were held in five or more different facilities. Here is
+            the most common of those longer routes, followed by 25 people. It starts, like most, in the <b>Baltimore
+              hold room</b>, typically for about a day.</p>
+          <div class="card-legend"><span><i style="background:var(--blue)"></i>The route, stop by stop</span></div>
+        </div>
+        <div class="step" data-step="4">
+          <h4 class="card-hed">Stops 2 and 3: Virginia.</h4>
+          <p class="card-body">First the Caroline Detention Facility in Bowling Green, typically for about a day and a
+            half, then ICE's Richmond hold room for a few hours before a long transfer.</p>
+        </div>
+        <div class="step" data-step="5">
+          <h4 class="card-hed">Stop 4: Winn Correctional Center, Winnfield, La.</h4>
+          <p class="card-body">More than 1,000 miles from Baltimore. The longest stop on this path, typically about
+            three and a half days.</p>
+        </div>
+        <div class="step" data-step="6">
+          <h4 class="card-hed">Stop 5: the Alexandria Staging Facility.</h4>
+          <p class="card-body">The deportation-flight hub. The whole trip typically took about <b>9.4 days</b>. 24 of
+            the 25 left the country, nearly all to their own; 16 had no criminal record.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="col">
+      <p>Most of these cases ended with the person leaving the country. Of the 2,635 people with no record whom ICE
+        arrested in Maryland from Jan. 20 through December 2025, about 77% had left by early August, through deportation
+        or voluntary departure. About 14% had been released, and 4% were still detained.</p>
+    </div>
+
+    <section class="scrolly bleed immersive globe" id="sc-globe"
+      aria-label="Globe of deportation destinations, step by step">
+      <div class="sticky">
+        <h3 class="chart-hed" style="padding:0 16px">Where people arrested in Maryland were sent</h3>
+        <div class="viz" id="m-globe"></div>
+        <div class="chart-foot" style="margin:6px 16px 0"><span class="chart-source">Recorded departures, October
+            2022–August 2026. Circles sit at the center of each country, not the arrival point. Source: ICE data via the
+            Deportation Data Project; CNS analysis. <b>Map: Mehedi Marof / CNS</b> · <a
+              href="data/destinations.csv">Destinations</a> · <a href="data/routes.csv">Routes</a></span><span
+            class="wordmark">Capital News Service</span></div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h4 class="card-hed">Most were sent to their own countries.</h4>
+          <p class="card-body">Guatemala, El Salvador, Mexico and Honduras received the most. Circles are sized by
+            recorded departures.</p>
+          <div class="card-legend"><span><i style="background:#1979b9"></i>Destination country</span></div>
+        </div>
+        <div class="step" data-step="1">
+          <h4 class="card-hed">308 went somewhere else.</h4>
+          <p class="card-body">They were sent to a country other than the one ICE lists as their citizenship. 203 went
+            to Mexico, mostly Central Americans, Venezuelans and Cubans; 168 of the 308 had no criminal record. Mexico
+            is often a country people crossed on the way north, so "another country" isn't always a place they'd never
+            been.</p>
+          <div class="card-legend globe-legend"></div>
+        </div>
+        <div class="step" data-step="2">
+          <h4 class="card-hed">A few crossed an ocean.</h4>
+          <p class="card-body">A handful of West Africans were sent to neighboring countries, such as Nigerians sent to
+            Ghana. Destinations are as ICE recorded them, which can be where a flight landed rather than where someone
+            settled.</p>
+          <div class="card-legend globe-legend"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="col">
+      <p>The records end in early August, too soon to measure the Community Trust Act. The next release from the
+        Deportation Data Project should show whether ICE's arrests from Maryland jails kept falling, and whether its
+        arrests in communities kept rising.</p>
+      <div class="limits">
+        <h3>What the records can't tell us</h3>
+        <ul>
+          <li><b>Why ICE arrested someone.</b> The records show criminal history and how an arrest happened, not the
+            reason for it.</li>
+          <li><b>A complete criminal history.</b> "No record" reflects ICE's systems at the time of arrest, which can be
+            incomplete.</li>
+          <li><b>Exact locations.</b> ICE often records a general area rather than an address. CNS placed arrests by the
+            city or county ICE listed.</li>
+          <li><b>Final counts for recent months.</b> ICE updates its records over time, and the latest months may grow.
+          </li>
+          <li><b>Every 287(g) arrest.</b> Only arrests ICE itself coded as 287(g) are counted as such.</li>
+        </ul>
+      </div>
+      <section class="methods">
+        <h2>How we did this analysis</h2>
+
+        <h3>The records</h3>
+        <p>This analysis uses U.S. Immigration and Customs Enforcement records that the Deportation Data Project, a
+          research group at the University of California, Berkeley, and UCLA, obtained through <a
+            href="https://deportationdata.org/foia.html">Freedom of Information Act lawsuits</a> and published on its <a
+            href="https://deportationdata.org/data/processed/ice.html">data page</a>. We used the project's release of
+          Aug. 24, 2026, which covers Oct. 1, 2022, through Aug. 6, 2026, and four of its files: arrests, detainers,
+          arrests linked to detention stays, and detention stints. In every file, we removed rows the project flags as
+          likely duplicates, using its <code>duplicate_drop_row</code> column.</p>
+
+        <h3>Arrests</h3>
+        <p>In the arrests file, each row is one ICE arrest. We counted an arrest as a Maryland arrest when the project's
+          <code>apprehension_state_filled_in</code> column says Maryland. That column uses the state ICE recorded and,
+          when ICE left it blank, fills it in from the arrest location; it identifies 12,859 Maryland rows, 214 more
+          than ICE's own state field. After removing 218 likely duplicates, 12,641 arrests remained. Some people were
+          arrested more than once, and 28 rows have no person identifier (<code>unique_identifier</code>), so the story
+          counts arrests rather than people. Each dot on the title screen is one Maryland arrest from January through
+          July 2026: 2,952 red dots for people with no prior conviction or pending charge, and 1,230 gray dots for
+          people with a prior conviction or a pending charge.
+        </p>
+        <p>Criminal history comes from <code>apprehension_criminality</code>, which records what ICE's systems showed at
+          the time of arrest: "Convicted Criminal," "Pending Criminal Charges" or "Other Immigration Violator." The
+          story calls the last group people with no prior conviction or pending charge. Whether a person already had a
+          final order of removal comes from <code>final_order_before_apprehension</code>.</p>
+        <p>How an arrest happened comes from <code>apprehension_method_simple</code>. We treated "Custodial Arrest,"
+          which includes ICE's Criminal Alien Program, and "287(g) Program" as custodial arrests, meaning a jail or
+          prison handed the person to ICE. All other arrests, mostly those ICE codes "At-Large Arrest," are
+          non-custodial. Arrests at ICE's two Baltimore offices were identified from <code>event_landmark</code>, where
+          ICE lists them as "NON DETAINED ENCOUNTERS AT BAL ERO" and "BALTIMORE ISAP OFFICE."</p>
+        <p>Year-over-year comparisons use Jan. 1 through July 31 of each year, because the records end Aug. 6. Figures
+          described as "this year" cover Jan. 1 through Aug. 6, 2026. Comparisons around Maryland's 287(g) ban are
+          monthly averages over periods of different lengths, Jan. 20, 2025, through Feb. 16, 2026 (393 days), and Feb.
+          17 through Aug. 6, 2026 (171 days): each count was divided by the number of days and multiplied by 30.4375,
+          the average length of a month. National figures come from the same file, using all states. The state
+          comparison includes the 37 states with at least 1,000 arrests from January through July 2026 and leaves out
+          the District of Columbia.</p>
+
+        <h3>Places</h3>
+        <p>To place arrests in counties, we first checked whether <code>event_landmark</code> names a county or
+          Baltimore City. If it did not, we used the city ICE recorded in <code>apprehension_city_original</code>,
+          matched to a county through a lookup table CNS built from every spelling in the data. Most spellings matched a
+          ZIP code directory directly; others were corrected by hand or matched to the closest valid spelling, and a few
+          could not be placed. In all, 98.7% of arrests were assigned a county. Arrest rates use 2020 census populations
+          from the Maryland Department of Planning and leave out arrests at ICE's Baltimore offices, which people come
+          to from across the state. The Eastern Shore includes Caroline, Cecil, Dorchester, Kent, Queen Anne's,
+          Somerset, Talbot, Wicomico and Worcester counties. Map circles are placed at the center of each city.</p>
+
+        <h3>Detainers</h3>
+        <p>In the detainers file, each row is one detainer: a request from ICE that a jail or prison hold a person or
+          notify the agency before releasing them. We kept detainers sent to facilities in Maryland
+          (<code>facility_state</code>) and dated them by <code>detainer_prepare_date</code>. ICE does not say what kind
+          of facility each one is, so CNS sorted the names in <code>detention_facility</code> into county jails, state
+          prisons and state-run jails, federal custody, police or courts, and ICE offices, using keywords in the names.
+          How a detainer ended comes from <code>detainer_lift_reason</code>; "Booked into Detention" means ICE took the
+          person into custody. Detainers closed as duplicates or replaced by a new form were left out of those outcome
+          shares.</p>
+
+        <h3>Detention and departures</h3>
+        <p>The project's file linking arrests to detention has one row per arrest, with the person's ICE detention stay
+          attached. Hold room times come from <code>book_in_date_time_first</code> and
+          <code>book_out_date_time_first</code> for people whose first stop (<code>detention_facility_first</code>) was
+          the Baltimore hold room: the hours between the two, summarized as a monthly median by the month of book-in, in
+          Eastern time. People detained since Jan. 20, 2025, are those with <code>has_detention_stay</code>; where they
+          spent the longest part of their detention comes from <code>detention_facility_state_longest</code>. A recorded
+          departure from the country is a non-missing <code>departed_date</code>, which includes removals and voluntary
+          departures. Release and continued detention come from <code>stay_release_reason_simple</code>.
+        </p>
+        <p>A person was counted as sent to a country other than their own when <code>departure_country</code> differs
+          from <code>citizenship_country</code>; one record listing "KOREA" and "SOUTH KOREA" was treated as the same
+          country. These fields come from this linked file, which draws on ICE's detention and removal records; the
+          arrests file records slightly fewer departures (7,536 compared with 7,611). Globe circles are placed at the
+          center of each country, not the arrival point.</p>
+
+        <h3>Facilities and paths</h3>
+        <p>In the detention stints file, each row is one stop at one facility within a person's detention stay. We kept
+          the stops for the stays above, matched on <code>stay_ID</code>. The number of facilities a person passed
+          through counts distinct <code>detention_facility_code</code> values; time in Louisiana and at Guantánamo Bay
+          comes from the <code>state</code> column, where ICE codes Guantánamo as "CU." To trace paths, we put each
+          person's stops in order of <code>book_in_date_time</code> and merged back-to-back stops at the same facility.
+          The map shows the single most common path, followed by 360 people, and the most common path with five stops,
+          followed by 25. Facilities are placed at the center of the city where they are located. Times on that route
+          are medians for the group, measured from <code>book_in_date_time</code> to <code>book_out_date_time</code>; no
+          individual's record is shown. Paths for people still detained when the records end may be incomplete.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <img src="assets/cns-logo.png" alt="Capital News Service">
+    <span>Capital News Service · Philip Merrill College of Journalism, University of Maryland</span>
+  </footer>
 </body>
+
 </html>
