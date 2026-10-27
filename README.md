@@ -29,20 +29,6 @@ assets/             CNS logo
 | Detention map and route (scroll) | js/charts/detentionMap.js | facilities.csv, route.csv, geo/us-states.json |
 | Where people were sent (globe, scroll) | js/charts/globe.js | destinations.csv, routes.csv, countries.csv, geo/world.json |
 
-## View it
-
-The page loads its CSV files, so it has to be served, not opened by double-clicking. From this folder:
-
-```
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000.
-
-## Publish it on GitHub Pages
-
-Push this folder to a GitHub repository, then go to **Settings → Pages**, choose **Deploy from a branch**, pick `main` and `/ (root)`, and save. The story will be at `https://<your-username>.github.io/<repository-name>/`.
-
 ## Libraries
 
 D3 7.8.5 (cdnjs) and Scrollama 3.2.0 (jsDelivr), loaded from the web. Fonts: Source Serif 4 and Poppins (Google Fonts).
