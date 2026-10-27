@@ -1,0 +1,65 @@
+/* charts.css — chart frames, legends, controls, tooltips and chart-specific layouts.
+   Uses the color and font variables defined in page.css. */
+/* ---------- CNS chart frame ---------- */
+.chart-frame{margin:44px auto 52px}
+.chart-hed{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.25;margin:0 0 4px;text-wrap:balance}
+.chart-chatter{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--ink-2);margin:0 0 12px;max-width:760px}
+.chart-note{font-family:var(--serif);font-style:italic;font-size:12.5px;line-height:1.45;color:var(--muted);margin:10px 0 0}
+.chart-foot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px;padding-top:6px;border-top:1px solid var(--hair)}
+.chart-source{font-family:var(--serif);font-size:12.5px;color:var(--muted);line-height:1.45}
+.chart-source b{font-family:var(--sans);font-weight:500;font-size:11.5px}
+.wordmark{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin:0 0 8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.legend i.line{height:3px;width:18px}
+.controls{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
+.controls button{font:500 12.5px var(--sans);background:#fff;color:var(--ink);border:1px solid var(--ink);border-radius:2px;padding:6px 12px;cursor:pointer;transition:background-color .25s,color .25s}
+.controls button[aria-pressed="true"]{background:var(--ink);color:#fff}
+button:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.two-up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.two-up h4{font-family:var(--sans);font-size:13px;font-weight:600;margin:0 0 6px}
+@media (max-width:720px){.two-up{grid-template-columns:1fr}}
+
+.viz{position:relative;width:100%}
+.viz svg{display:block;width:100%;height:auto;overflow:visible}
+.viz text{font-family:var(--sans);font-size:11.5px;fill:var(--muted)}
+.viz .label{fill:var(--ink);font-weight:600}
+.viz .anno{fill:var(--ink);font-size:11px;font-weight:600}
+.viz .anno-sub{fill:var(--ink-2);font-size:11px}
+.viz .halo{paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}
+.viz .gridline{stroke:var(--hair)}
+.viz .baseline{stroke:#9a9a9a}
+.tip{position:absolute;pointer-events:none;z-index:10;background:#111;color:#fff;font-family:var(--sans);font-size:12px;line-height:1.45;padding:8px 10px;border-radius:3px;
+  transform:translate(-50%,calc(-100% - 10px));opacity:0;transition:opacity .1s;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.tip.on{opacity:1}
+.tip .row{display:flex;justify-content:space-between;gap:16px;font-variant-numeric:tabular-nums}
+.tip b{font-weight:600}
+
+/* ---------- trend card ---------- */
+.trend{background:var(--wash);border-top:3px solid var(--ink);padding:28px 32px 22px}
+.trend .chart-hed{font-size:clamp(21px,2.8vw,28px);line-height:1.22}
+@media (max-width:600px){.trend{padding:20px 14px 16px}}
+
+/* ---------- map explorer ---------- */
+.explorer{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:760px){.explorer{grid-template-columns:1fr}}
+.panel-card{border-top:3px solid var(--ink);padding-top:10px;font-family:var(--sans)}
+.panel-card label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.panel-card select{width:100%;font:500 15px var(--sans);padding:8px;border:1px solid #bbb;border-radius:2px;background:#fff;color:var(--ink)}
+.panel-card .big{font-weight:700;font-size:38px;line-height:1;margin:16px 0 4px;font-variant-numeric:tabular-nums}
+.panel-card .cap{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.panel-card dl{display:grid;grid-template-columns:1fr auto;gap:7px 12px;margin:14px 0 0;font-size:13px}
+.panel-card dt{color:var(--ink-2)}.panel-card dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.scale{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--sans);font-size:11.5px;color:var(--muted);margin-top:4px}
+.scale .sw{display:flex}.scale .sw i{width:26px;height:9px}
+.county path{stroke:#fff;stroke-width:.8}
+.county path.sel{stroke:var(--ink);stroke-width:2}
+
+/* ---------- outcome tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.tile{padding:14px 14px 6px 0}.tile+.tile{padding-left:14px;border-left:1px solid var(--rule)}
+.tile .n{font-family:var(--sans);font-weight:700;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.tile .l{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin-top:6px;line-height:1.4}
+@media (max-width:560px){.tiles{grid-template-columns:1fr}.tile+.tile{border-left:0;padding-left:0;border-top:1px solid var(--rule)}}
+

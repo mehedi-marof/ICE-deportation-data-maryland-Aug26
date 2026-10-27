@@ -1,0 +1,118 @@
+/* page.css — overall page design for the CNS story — follows the CNS Graphics Style Guide.
+   Headlines and sources: Source Serif. Labels, bylines, UI: Poppins.
+   Main colors: blue #1979b9, orange #faa916, red #c71e1d. Accents: #80217f, #de5826, #2ec4b6, #8fd694.
+   Website colors: yellow #fbd603, dark red #990000, near-black #0a0a0a, gray #666666.
+   Layout: 680px reading column; figures 960px; scrollytelling sections run full width. */
+:root{
+  color-scheme: light;
+  --ink:#0a0a0a; --ink-2:#333333; --muted:#666666; --rule:#dcdcdc; --hair:#ececec; --paper:#ffffff; --wash:#f6f6f3;
+  --blue:#1979b9; --orange:#faa916; --red:#c71e1d; --purple:#80217f; --rust:#de5826; --teal:#2ec4b6; --green:#8fd694;
+  --yellow:#fbd603; --darkred:#990000; --gray:#b5b5b5;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:Poppins, "Helvetica Neue", Arial, sans-serif;
+  --col:680px; --wide:960px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.66;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 0}
+a{color:var(--blue);text-underline-offset:2px}
+p{margin:0 0 1.15em}
+.col{max-width:var(--col);margin-inline:auto}
+.wide{max-width:var(--wide);margin-inline:auto}
+.bleed{margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)))}
+
+/* ---------- masthead + title screen ---------- */
+.masthead{position:fixed;top:0;left:0;right:0;z-index:20;background:#000;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  height:44px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));padding-top:env(safe-area-inset-top,0px);box-sizing:content-box}
+.masthead img{height:22px;width:auto;display:block}
+.masthead .section{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#cfcfcf}
+.progress{position:fixed;top:calc(44px + env(safe-area-inset-top,0px));left:0;height:3px;background:var(--yellow);width:0;z-index:21}
+@media (max-width:560px){.masthead .section{display:none}.masthead img{height:18px}}
+
+.title{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:96px max(16px,env(safe-area-inset-right,0px)) 110px max(16px,env(safe-area-inset-left,0px));overflow:hidden}
+.title canvas{position:absolute;inset:0;width:100%;height:100%}
+.title .panel{position:relative;z-index:2;max-width:860px;background:rgba(255,255,255,.95);padding:34px 40px 28px}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 14px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,6.2vw,66px);line-height:1.03;letter-spacing:-.015em;margin:0 0 18px;text-wrap:balance}
+.dek{font-family:var(--serif);font-size:clamp(18px,2.1vw,22px);line-height:1.45;color:var(--ink-2);max-width:660px;margin:0 auto 18px}
+.byline{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+.byline b{color:var(--ink);font-weight:600}
+.legend-dots{position:relative;z-index:2;margin-top:14px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);background:rgba(255,255,255,.95);padding:7px 14px;
+  display:inline-flex;gap:6px 16px;flex-wrap:wrap;justify-content:center}
+.legend-dots i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.95);padding:8px 14px;text-decoration:none}
+.cue span{display:block;font-size:16px;line-height:1;margin-top:4px;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media (max-width:600px){.title .panel{padding:22px 18px 18px}}
+
+/* ---------- text ---------- */
+.lede::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:4.1em;line-height:.82;padding:6px 8px 0 0}
+.section-label{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+  margin:72px 0 8px;padding-top:12px;border-top:3px solid var(--ink)}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(25px,3.3vw,32px);line-height:1.16;margin:0 0 16px;text-wrap:balance}
+.hl{background:linear-gradient(transparent 62%, rgba(199,30,29,.16) 62%);font-weight:600}
+.explainer{border-left:3px solid var(--ink);background:var(--wash);padding:14px 18px;margin:6px 0 26px;font-size:16.5px;line-height:1.55}
+.explainer h3{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+.explainer p:last-child{margin:0}
+
+/* ---------- scrollytelling ---------- */
+.scrolly{position:relative;margin:56px 0 24px}
+.scrolly .sticky{position:sticky;top:calc(52px + env(safe-area-inset-top,0px));height:calc(100vh - 64px);height:calc(100svh - 64px);display:flex;flex-direction:column;justify-content:center;
+  max-width:1100px;margin:0 auto;z-index:0}
+.scrolly .sticky .viz{flex:1 1 auto;min-height:0;display:flex;align-items:center}
+.scrolly .sticky .viz svg{max-height:100%}
+.scrolly .sticky .chart-hed{margin-top:4px}
+.scrolly .steps{position:relative;z-index:2;margin-top:-30vh;padding-bottom:40vh;pointer-events:none}
+.scrolly .step{max-width:380px;margin:0 0 75vh 4%;background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:16px 18px;
+  font-family:var(--serif);font-size:17px;line-height:1.55;box-shadow:0 2px 14px rgba(0,0,0,.08);pointer-events:auto;opacity:.35;transition:opacity .3s}
+.scrolly .step.is-active{opacity:1}
+.scrolly .step:last-child{margin-bottom:0}
+.scrolly .step .k{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.scrolly .step .k i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.scrolly .step p{margin:0}
+.scrolly .step b{font-weight:700}
+@media (max-width:760px){.scrolly .step{margin:0 auto 75vh;max-width:92%;font-size:16px}
+  .scrolly .sticky{justify-content:flex-start;padding-top:6px}.scrolly .sticky .viz{flex:0 0 auto}
+  .scrolly .sticky .chart-foot{margin-top:auto!important}}
+
+/* ---------- limits + methods + footer ---------- */
+.limits{background:var(--wash);padding:20px 24px 8px;margin:32px 0}
+.limits h3{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px}
+.limits li{font-size:16px;line-height:1.5;margin-bottom:8px}
+.methods{margin-top:52px;border-top:1px solid var(--ink);padding-top:8px;font-size:15.5px;line-height:1.58;color:var(--ink-2)}
+.methods h2{font-size:20px;margin:16px 0 10px;color:var(--ink)}
+.methods li{margin-bottom:8px}
+.site-foot{margin-top:64px;background:#000;color:#cfcfcf;font-family:var(--sans);font-size:12px;padding:22px max(16px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.site-foot img{height:18px}
+.noscript{font-family:var(--sans);font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+/* question headings in the "Explore the data" section */
+.data-q{font-family:var(--sans);font-size:15px;font-weight:600;margin:44px 0 -16px;padding-left:12px;border-left:4px solid var(--yellow)}
+.chart-source a{color:var(--blue);font-family:var(--sans);font-size:11.5px;font-weight:500}
+.byline a{color:inherit;text-decoration:none}.byline a:hover b{text-decoration:underline}
+
+/* ---------- immersive scrollytelling sections (Wisconsin Watch-style cards, in the page's own light palette) ---------- */
+.scrolly.immersive{background:linear-gradient(#fff, var(--wash) 90px, var(--wash) calc(100% - 90px), #fff);margin:56px 0 32px;padding:20px 0 0}
+.scrolly.immersive .step{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);color:var(--ink-2);box-shadow:0 6px 24px rgba(0,0,0,.08);
+  max-width:420px;padding:22px 24px;opacity:.35}
+.scrolly.immersive .step.is-active{opacity:1}
+.step .card-hed{font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.25;margin:0 0 12px;color:var(--ink);letter-spacing:-.01em}
+.step .card-body{font-size:16px;line-height:1.55;margin:0;padding-top:12px;border-top:1px solid var(--rule)}
+.step .card-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:12.5px}
+.step .card-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.scrolly .next{position:absolute;right:20px;bottom:18px;z-index:3;font:600 13px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--ink);
+  border-radius:999px;padding:9px 16px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrolly .next.on{opacity:1;pointer-events:auto}
+.scrolly.globe .sticky .viz svg{max-width:min(100%,82vh)}
+.scrolly.immersive .sticky .viz svg{overflow:hidden}   /* zoomed maps stay inside their frame */
+@media (min-width:900px){.scrolly.immersive .sticky .viz{padding-left:min(30vw,420px)}}   /* map sits right of the cards */
+/* subheads carry the structure on their own: space above, no rules or labels */
+.col h2{margin-top:64px}
+.col .lede + p, .col h2 + p{margin-top:0}
+.methods h3{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px}
+.methods p{margin:0 0 12px}
+.methods code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--wash);padding:1px 4px;border-radius:2px;overflow-wrap:anywhere}

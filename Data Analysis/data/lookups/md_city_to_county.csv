@@ -1,0 +1,499 @@
+city_raw,city_clean,county,arrests_in_md_rows,method
+Baltimore,BALTIMORE,Baltimore city,2851,ZIP directory
+BALTIMORE,BALTIMORE,Baltimore city,1234,ZIP directory
+Salisbury,SALISBURY,Wicomico County,1168,ZIP directory
+Silver Spring,SILVER SPRING,Montgomery County,717,ZIP directory
+Hyattsville,HYATTSVILLE,Prince George's County,550,ZIP directory
+Frederick,FREDERICK,Frederick County,372,ZIP directory
+Ocean City,OCEAN CITY,Worcester County,285,ZIP directory
+Easton,EASTON,Talbot County,205,ZIP directory
+Hagerstown,HAGERSTOWN,Washington County,186,ZIP directory
+Laurel,LAUREL,Prince George's County,178,ZIP directory
+Bel Air,BEL AIR,Harford County,177,ZIP directory
+Annapolis,ANNAPOLIS,Anne Arundel County,146,ZIP directory
+Jessup,JESSUP,Howard County,127,ZIP directory
+Cambridge,CAMBRIDGE,Dorchester County,118,ZIP directory
+Rockville,ROCKVILLE,Montgomery County,114,ZIP directory
+Glen Burnie,GLEN BURNIE,Anne Arundel County,100,ZIP directory
+Gaithersburg,GAITHERSBURG,Montgomery County,99,ZIP directory
+Towson,TOWSON,Baltimore County,96,ZIP directory
+Greenbelt,GREENBELT,Prince George's County,92,ZIP directory
+Halethorpe,HALETHORPE,Baltimore County,84,ZIP directory
+Centreville,CENTREVILLE,Queen Anne's County,80,ZIP directory
+Delmar,DELMAR,Wicomico County,79,ZIP directory
+Westover,WESTOVER,Somerset County,78,ZIP directory
+Takoma Park,TAKOMA PARK,Montgomery County,77,ZIP directory
+Adelphi,ADELPHI,Prince George's County,72,ZIP directory
+Columbia,COLUMBIA,Howard County,72,ZIP directory
+Snow Hill,SNOW HILL,Worcester County,66,ZIP directory
+Riverdale,RIVERDALE,Prince George's County,63,ZIP directory
+Fort Meade,FORT MEADE,Anne Arundel County,62,ZIP directory
+SILVER SPRING,SILVER SPRING,Montgomery County,61,ZIP directory
+HAGERSTOWN,HAGERSTOWN,Washington County,60,ZIP directory
+Beltsville,BELTSVILLE,Prince George's County,60,ZIP directory
+Westminster,WESTMINSTER,Carroll County,59,ZIP directory
+Fort George G Meade,FORT MEADE,Anne Arundel County,59,manual spelling fix
+Elkridge,ELKRIDGE,Howard County,58,ZIP directory
+Brooklyn,BROOKLYN,Baltimore city,51,ZIP directory
+Oxon Hill,OXON HILL,Prince George's County,47,ZIP directory
+Fruitland,FRUITLAND,Wicomico County,46,ZIP directory
+Dundalk,DUNDALK,Baltimore County,46,ZIP directory
+College Park,COLLEGE PARK,Prince George's County,43,ZIP directory
+Berlin,BERLIN,Worcester County,43,ZIP directory
+ROCKVILLE,ROCKVILLE,Montgomery County,42,ZIP directory
+Rosedale,ROSEDALE,Baltimore County,40,ZIP directory
+Elkton,ELKTON,Cecil County,40,ZIP directory
+Denton,DENTON,Caroline County,40,ZIP directory
+Bladensburg,BLADENSBURG,Prince George's County,40,ZIP directory
+FORT MEADE,FORT MEADE,Anne Arundel County,39,ZIP directory
+HYATTSVILLE,HYATTSVILLE,Prince George's County,37,ZIP directory
+LAUREL,LAUREL,Prince George's County,37,ZIP directory
+Princess Anne,PRINCESS ANNE,Somerset County,34,ZIP directory
+Essex,ESSEX,Baltimore County,33,ZIP directory
+Catonsville,CATONSVILLE,Baltimore County,33,ZIP directory
+Cumberland,CUMBERLAND,Allegany County,32,ZIP directory
+Ellicott City,ELLICOTT CITY,Howard County,31,ZIP directory
+SALISBURY,SALISBURY,Wicomico County,31,ZIP directory
+Germantown,GERMANTOWN,Montgomery County,29,ZIP directory
+Upper Marlboro,UPPER MARLBORO,Prince George's County,29,ZIP directory
+Hanover,HANOVER,Anne Arundel County,27,ZIP directory
+Lanham,LANHAM,Prince George's County,26,ZIP directory
+Marydel,MARYDEL,Caroline County,26,ZIP directory
+FREDERICK,FREDERICK,Frederick County,25,ZIP directory
+ANNAPOLIS,ANNAPOLIS,Anne Arundel County,25,ZIP directory
+Cockeysville,COCKEYSVILLE,Baltimore County,24,ZIP directory
+baltimore,BALTIMORE,Baltimore city,24,ZIP directory
+Capitol Heights,CAPITOL HEIGHTS,Prince George's County,22,ZIP directory
+Pittsville,PITTSVILLE,Wicomico County,21,ZIP directory
+Randallstown,RANDALLSTOWN,Baltimore County,21,ZIP directory
+Trappe,TRAPPE,Talbot County,21,ZIP directory
+Glen Echo,GLEN ECHO,Montgomery County,21,ZIP directory
+JESSUP,JESSUP,Howard County,21,ZIP directory
+Grasonville,GRASONVILLE,Queen Anne's County,20,ZIP directory
+salisbury,SALISBURY,Wicomico County,19,ZIP directory
+GREENBELT,GREENBELT,Prince George's County,19,ZIP directory
+Preston,PRESTON,Caroline County,19,ZIP directory
+Temple Hills,TEMPLE HILLS,Prince George's County,19,ZIP directory
+Willards,WILLARDS,Wicomico County,19,ZIP directory
+New Carrollton,NEW CARROLLTON,Prince George's County,18,ZIP directory
+GLEN BURNIE,GLEN BURNIE,Anne Arundel County,18,ZIP directory
+TOWSON,TOWSON,Baltimore County,18,ZIP directory
+GAITHERSBURG,GAITHERSBURG,Montgomery County,17,ZIP directory
+Gwynn Oak,GWYNN OAK,Baltimore County,16,ZIP directory
+Bowie,BOWIE,Prince George's County,16,ZIP directory
+HALETHORPE,HALETHORPE,Baltimore County,16,ZIP directory
+Bethesda,BETHESDA,Montgomery County,16,ZIP directory
+Fort Washington,FORT WASHINGTON,Prince George's County,15,ZIP directory
+BELTSVILLE,BELTSVILLE,Prince George's County,15,ZIP directory
+Leonardtown,LEONARDTOWN,St. Mary's County,15,ZIP directory
+Eden,EDEN,Wicomico County,14,ZIP directory
+Mount Rainier,MOUNT RAINIER,Prince George's County,14,ZIP directory
+Chestertown,CHESTERTOWN,Kent County,13,ZIP directory
+WESTMINSTER,WESTMINSTER,Carroll County,13,ZIP directory
+Pikesville,PIKESVILLE,Baltimore County,13,ZIP directory
+District Heights,DISTRICT HEIGHTS,Prince George's County,13,ZIP directory
+Brentwood,BRENTWOOD,Prince George's County,12,ZIP directory
+Owings Mills,OWINGS MILLS,Baltimore County,12,ZIP directory
+CUMBERLAND,CUMBERLAND,Allegany County,12,ZIP directory
+Montgomery Village,MONTGOMERY VILLAGE,Montgomery County,12,ZIP directory
+Windsor Mill,WINDSOR MILL,Baltimore County,12,ZIP directory
+COLUMBIA,COLUMBIA,Howard County,11,ZIP directory
+Waldorf,WALDORF,Charles County,11,ZIP directory
+Parsonsburg,PARSONSBURG,Wicomico County,11,ZIP directory
+Hebron,HEBRON,Wicomico County,11,ZIP directory
+UPPER MARLBORO,UPPER MARLBORO,Prince George's County,10,ZIP directory
+Edgewater,EDGEWATER,Anne Arundel County,10,ZIP directory
+Barstow,BARSTOW,Calvert County,10,ZIP directory
+RIVERDALE,RIVERDALE,Prince George's County,9,ZIP directory
+Lutherville Timonium,LUTHERVILLE TIMONIUM,Baltimore County,9,ZIP directory
+Kensington,KENSINGTON,Montgomery County,9,ZIP directory
+Queenstown,QUEENSTOWN,Queen Anne's County,9,ZIP directory
+ADELPHI,ADELPHI,Prince George's County,8,ZIP directory
+COLLEGE PARK,COLLEGE PARK,Prince George's County,8,ZIP directory
+Silver Springs,SILVER SPRING,Montgomery County,8,manual spelling fix
+Potomac,POTOMAC,Montgomery County,8,ZIP directory
+Parkville,PARKVILLE,Baltimore County,8,ZIP directory
+Clinton,CLINTON,Prince George's County,8,ZIP directory
+White Marsh,WHITE MARSH,Baltimore County,8,ZIP directory
+Cheverly,CHEVERLY,Prince George's County,7,ZIP directory
+LANHAM,LANHAM,Prince George's County,7,ZIP directory
+Suitland,SUITLAND,Prince George's County,7,ZIP directory
+East New Market,EAST NEW MARKET,Dorchester County,7,ZIP directory
+OCEAN CITY,OCEAN CITY,Worcester County,7,ZIP directory
+Chillum,CHILLUM,Prince George's County,7,ZIP directory
+La Plata,LA PLATA,Charles County,7,ZIP directory
+Riverdale Park,RIVERDALE PARK,Prince George's County,7,ZIP directory
+Vienna,VIENNA,Dorchester County,7,ZIP directory
+ROSEDALE,ROSEDALE,Baltimore County,7,ZIP directory
+TAKOMA PARK,TAKOMA PARK,Montgomery County,7,ZIP directory
+Edgewood,EDGEWOOD,Harford County,7,ZIP directory
+EASTON,EASTON,Talbot County,7,ZIP directory
+"Baltimore, MD",BALTIMORE,Baltimore city,7,ZIP directory
+laurel,LAUREL,Prince George's County,7,ZIP directory
+ELKRIDGE,ELKRIDGE,Howard County,6,ZIP directory
+Olney,OLNEY,Montgomery County,6,ZIP directory
+DUNDALK,DUNDALK,Baltimore County,6,ZIP directory
+Eldersburg,ELDERSBURG,Carroll County,6,ZIP directory
+Hurlock,HURLOCK,Dorchester County,6,ZIP directory
+Pocomoke City,POCOMOKE CITY,Worcester County,6,ZIP directory
+Ocean Pines,OCEAN PINES,Worcester County,6,ZIP directory
+Centerville,CENTREVILLE,Queen Anne's County,6,manual spelling fix
+Middle River,MIDDLE RIVER,Baltimore County,6,ZIP directory
+WINDSOR MILL,WINDSOR MILL,Baltimore County,6,ZIP directory
+WESTOVER,WESTOVER,Somerset County,6,ZIP directory
+OXON HILL,OXON HILL,Prince George's County,5,ZIP directory
+FRUITLAND,FRUITLAND,Wicomico County,5,ZIP directory
+CAMBRIDGE,CAMBRIDGE,Dorchester County,5,ZIP directory
+Annapolis Junction,ANNAPOLIS JUNCTION,Anne Arundel County,5,ZIP directory
+Lexington Park,LEXINGTON PARK,St. Mary's County,5,ZIP directory
+Aberdeen,ABERDEEN,Harford County,5,ZIP directory
+GLEN ECHO,GLEN ECHO,Montgomery County,5,ZIP directory
+Langley Park,LANGLEY PARK,Prince George's County,5,ZIP directory
+EDGEWOOD,EDGEWOOD,Harford County,5,ZIP directory
+Middletown,MIDDLETOWN,Frederick County,5,ZIP directory
+Whaleyville,WHALEYVILLE,Worcester County,5,ZIP directory
+Sudersville,SUDLERSVILLE,Queen Anne's County,5,manual spelling fix
+Sykesville,SYKESVILLE,Carroll County,5,ZIP directory
+WASHINGTON DC,WASHINGTON DC,,4,unmatched
+silver spring,SILVER SPRING,Montgomery County,4,ZIP directory
+Joint Base Andrews,ANDREWS AIR FORCE BASE,Prince George's County,4,manual spelling fix
+towson,TOWSON,Baltimore County,4,ZIP directory
+BETHESDA,BETHESDA,Montgomery County,4,ZIP directory
+BLADENSBURG,BLADENSBURG,Prince George's County,4,ZIP directory
+Damascus,DAMASCUS,Montgomery County,4,ZIP directory
+Ijamsville,IJAMSVILLE,Frederick County,4,ZIP directory
+Glenn Dale,GLENN DALE,Prince George's County,4,ZIP directory
+Aspen Hill,ASPEN HILL,Montgomery County,4,ZIP directory
+FREDRICK,FREDERICK,Frederick County,4,fuzzy match (review)
+Landover,LANDOVER,Prince George's County,4,ZIP directory
+Curtis Bay,CURTIS BAY,Anne Arundel County,4,ZIP directory
+Andrews Air Force Base,ANDREWS AIR FORCE BASE,Prince George's County,4,ZIP directory
+hyattsville,HYATTSVILLE,Prince George's County,4,ZIP directory
+Savage,SAVAGE,Howard County,4,ZIP directory
+BALRTIMORE,BALTIMORE,Baltimore city,4,manual spelling fix
+Gambrills,GAMBRILLS,Anne Arundel County,4,ZIP directory
+Berwyn Heights,BERWYN HEIGHTS,Prince George's County,3,ZIP directory
+COCKEYSVILLE,COCKEYSVILLE,Baltimore County,3,ZIP directory
+ESSEX,ESSEX,Baltimore County,3,ZIP directory
+Glenarden,GLENARDEN,Prince George's County,3,ZIP directory
+Upper Malboro,UPPER MARLBORO,Prince George's County,3,fuzzy match (review)
+Reisterstown,REISTERSTOWN,Baltimore County,3,ZIP directory
+brooklyn,BROOKLYN,Baltimore city,3,ZIP directory
+IJAMSVILLE,IJAMSVILLE,Frederick County,3,ZIP directory
+Mardela Springs,MARDELA SPRINGS,Wicomico County,3,ZIP directory
+CLARKSBURG,CLARKSBURG,Montgomery County,3,ZIP directory
+CENTREVILLE,CENTREVILLE,Queen Anne's County,3,ZIP directory
+Derwood,DERWOOD,Montgomery County,3,ZIP directory
+Belcamp,BELCAMP,Harford County,3,ZIP directory
+CATONSVILLE,CATONSVILLE,Baltimore County,3,ZIP directory
+RIVERDALE PARK,RIVERDALE PARK,Prince George's County,3,ZIP directory
+Millersville,MILLERSVILLE,Anne Arundel County,3,ZIP directory
+Capital Heights,CAPITOL HEIGHTS,Prince George's County,3,manual spelling fix
+BEL AIR,BEL AIR,Harford County,3,ZIP directory
+Colesville,COLESVILLE,Montgomery County,3,ZIP directory
+Pocomoke,POCOMOKE CITY,Worcester County,3,manual spelling fix
+MOUNT RAINIER,MOUNT RAINIER,Prince George's County,3,ZIP directory
+BALTIOMRE,BALTIMORE,Baltimore city,3,manual spelling fix
+Woodstock,WOODSTOCK,Howard County,3,ZIP directory
+DISTRICT HEIGHTS,DISTRICT HEIGHTS,Prince George's County,3,ZIP directory
+Salsibury,SALISBURY,Wicomico County,3,manual spelling fix
+Ocean CIty,OCEAN CITY,Worcester County,3,ZIP directory
+Baltimre,BALTIMORE,Baltimore city,3,manual spelling fix
+Burtonsville,BURTONSVILLE,Montgomery County,3,ZIP directory
+Linthicum Heights,LINTHICUM HEIGHTS,Anne Arundel County,3,ZIP directory
+Takoma,TAKOMA,,3,unmatched
+Ft Meade,FORT MEADE,Anne Arundel County,3,manual spelling fix
+Stevensville,STEVENSVILLE,Queen Anne's County,3,ZIP directory
+Hampstead,HAMPSTEAD,Carroll County,3,ZIP directory
+Fort George G. Meade,FORT MEADE,Anne Arundel County,3,manual spelling fix
+GERMANTOWN,GERMANTOWN,Montgomery County,3,ZIP directory
+Chester,CHESTER,Queen Anne's County,3,ZIP directory
+TEMPLE HILLS,TEMPLE HILLS,Prince George's County,3,ZIP directory
+Bishopville,BISHOPVILLE,Worcester County,3,ZIP directory
+CAPITOL HEIGHTS,CAPITOL HEIGHTS,Prince George's County,3,ZIP directory
+Wheaton,WHEATON,Montgomery County,3,ZIP directory
+WESTMINISTER,WESTMINSTER,Carroll County,3,fuzzy match (review)
+Greensboro,GREENSBORO,Caroline County,3,ZIP directory
+UNKNOWN,UNKNOWN,,2,unmatched
+PARSONSBURG,PARSONSBURG,Wicomico County,2,ZIP directory
+Brooklyn Park,BROOKLYN PARK,Baltimore city,2,ZIP directory
+Joppa,JOPPA,Harford County,2,ZIP directory
+OWINGS MILLS,OWINGS MILLS,Baltimore County,2,ZIP directory
+Hyattesville,HYATTSVILLE,Prince George's County,2,fuzzy match (review)
+LA PLATA,LA PLATA,Charles County,2,ZIP directory
+JOINT BASE ANDREWS,ANDREWS AIR FORCE BASE,Prince George's County,2,manual spelling fix
+college park,COLLEGE PARK,Prince George's County,2,ZIP directory
+JB ANDREWS,JB ANDREWS,Prince George's County,2,ZIP directory
+Scaggsville,SCAGGSVILLE,Howard County,2,ZIP directory
+LANDOVER HILLS,LANDOVER HILLS,Prince George's County,2,ZIP directory
+PRESTON,PRESTON,Caroline County,2,ZIP directory
+"BALTIMORE,",BALTIMORE,Baltimore city,2,ZIP directory
+JB Andrews,JB ANDREWS,Prince George's County,2,ZIP directory
+MIDDLE RIVER,MIDDLE RIVER,Baltimore County,2,ZIP directory
+SCAGGSVILLE,SCAGGSVILLE,Howard County,2,ZIP directory
+BALITIMORE,BALTIMORE,Baltimore city,2,fuzzy match (review)
+ocean city,OCEAN CITY,Worcester County,2,ZIP directory
+Odenton,ODENTON,Anne Arundel County,2,ZIP directory
+Seat Pleasant,SEAT PLEASANT,Prince George's County,2,ZIP directory
+RANDALLSTOWN,RANDALLSTOWN,Baltimore County,2,ZIP directory
+Hyatsville,HYATTSVILLE,Prince George's County,2,manual spelling fix
+HILLCREST HEIGHTS,HILLCREST HEIGHTS,Prince George's County,2,ZIP directory
+frederick,FREDERICK,Frederick County,2,ZIP directory
+DELMAR,DELMAR,Wicomico County,2,ZIP directory
+fruitland,FRUITLAND,Wicomico County,2,ZIP directory
+RIVERSIDE,RIVERSIDE,,2,unmatched
+Fredrick,FREDERICK,Frederick County,2,fuzzy match (review)
+"Ocean City, MD",OCEAN CITY,Worcester County,2,ZIP directory
+MONTGOMERY VILLAGE,MONTGOMERY VILLAGE,Montgomery County,2,ZIP directory
+annapolis,ANNAPOLIS,Anne Arundel County,2,ZIP directory
+Morningside,MORNINGSIDE,Prince George's County,2,ZIP directory
+"Glen Echo,",GLEN ECHO,Montgomery County,2,ZIP directory
+Lansdowne,LANSDOWNE,Baltimore County,2,ZIP directory
+Forest Heights,FOREST HEIGHTS,Prince George's County,2,ZIP directory
+Nottingham,NOTTINGHAM,Baltimore County,2,ZIP directory
+"Salisbury, Maryland",SALISBURY,Wicomico County,2,ZIP directory
+WALDORF,WALDORF,Charles County,2,ZIP directory
+PARKVILLE,PARKVILLE,Baltimore County,2,ZIP directory
+Patuxent River,PATUXENT RIVER,St. Mary's County,2,ZIP directory
+LINTHICUM HEIGHTS,LINTHICUM HEIGHTS,Anne Arundel County,2,ZIP directory
+Sudlersville,SUDLERSVILLE,Queen Anne's County,2,ZIP directory
+Fort Mead,FORT MEADE,Anne Arundel County,2,manual spelling fix
+Maryland City,MARYLAND CITY,Anne Arundel County,2,ZIP directory
+Jb Andrews,JB ANDREWS,Prince George's County,2,ZIP directory
+Crisfield,CRISFIELD,Somerset County,2,ZIP directory
+Finksburg,FINKSBURG,Carroll County,2,ZIP directory
+New Carrolltn,NEW CARROLLTN,Prince George's County,2,ZIP directory
+OCEAN PINES,OCEAN PINES,Worcester County,2,ZIP directory
+Pasadena,PASADENA,Anne Arundel County,2,ZIP directory
+Dorchester,DORCHESTER,,2,unmatched
+LEONARDTOWN,LEONARDTOWN,St. Mary's County,2,ZIP directory
+BALTIORE,BALTIMORE,Baltimore city,2,fuzzy match (review)
+Westminister,WESTMINSTER,Carroll County,2,fuzzy match (review)
+Mount Rainer,MOUNT RAINIER,Prince George's County,2,fuzzy match (review)
+ABERDEEN PROVING GROUND,ABERDEEN PROVING GROUND,Harford County,2,ZIP directory
+SILVER SPRINGS,SILVER SPRING,Montgomery County,2,manual spelling fix
+SNOW HILL,SNOW HILL,Worcester County,2,ZIP directory
+Clarksburg,CLARKSBURG,Montgomery County,2,ZIP directory
+Abingdon,ABINGDON,Harford County,2,ZIP directory
+Langly Park,LANGLEY PARK,Prince George's County,1,manual spelling fix
+HAYATTSVILLE,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+Queen Anne's County,QUEEN ANNE'S COUNTY,Queen Anne's County,1,ZIP directory
+HUNTINGTOWN,HUNTINGTOWN,Calvert County,1,ZIP directory
+OXEN HILL,OXON HILL,Prince George's County,1,fuzzy match (review)
+Collge Park,COLLEGE PARK,Prince George's County,1,fuzzy match (review)
+jESSUP,JESSUP,Howard County,1,ZIP directory
+North Beach,NORTH BEACH,Calvert County,1,ZIP directory
+PRINCE GEORGES,,Prince George's County,1,manual spelling fix
+Anne Arundel County,ANNE ARUNDEL COUNTY,Anne Arundel County,1,county name
+gaithersburg,GAITHERSBURG,Montgomery County,1,ZIP directory
+Ford Mead,FORT MEADE,Anne Arundel County,1,manual spelling fix
+Henderson,HENDERSON,Caroline County,1,ZIP directory
+GLENARDEN,GLENARDEN,Prince George's County,1,ZIP directory
+Collage Park,COLLEGE PARK,Prince George's County,1,fuzzy match (review)
+Woodlawn,WOODLAWN,Baltimore County,1,ZIP directory
+VIENNA,VIENNA,Dorchester County,1,ZIP directory
+centerville,CENTREVILLE,Queen Anne's County,1,manual spelling fix
+NORTH BETHESDA,NORTH BETHESDA,Montgomery County,1,ZIP directory
+Hyaattsvilee,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+CANTONSVILLE,CATONSVILLE,Baltimore County,1,fuzzy match (review)
+Skyesville,SYKESVILLE,Carroll County,1,fuzzy match (review)
+Bsaltimore,BALTIMORE,Baltimore city,1,manual spelling fix
+Phoenix,PHOENIX,Baltimore County,1,ZIP directory
+Elridge,ELKRIDGE,Howard County,1,fuzzy match (review)
+MONTOGOMERY VILLAGE,MONTGOMERY VILLAGE,Montgomery County,1,fuzzy match (review)
+princess anne,PRINCESS ANNE,Somerset County,1,ZIP directory
+Harwood,HARWOOD,Anne Arundel County,1,ZIP directory
+Oakland,OAKLAND,Garrett County,1,ZIP directory
+FT MEADE,FORT MEADE,Anne Arundel County,1,manual spelling fix
+centreville,CENTREVILLE,Queen Anne's County,1,ZIP directory
+Bishop,BISHOP,,1,unmatched
+Langely,LANGLEY PARK,Prince George's County,1,manual spelling fix
+BELTVILLE,BELTSVILLE,Prince George's County,1,fuzzy match (review)
+Pttsville,PITTSVILLE,Wicomico County,1,manual spelling fix
+Cottage City,COTTAGE CITY,Prince George's County,1,ZIP directory
+11,11,,1,unmatched
+DENTON,DENTON,Caroline County,1,ZIP directory
+ANDREWS AIR FORCE BASE,ANDREWS AIR FORCE BASE,Prince George's County,1,ZIP directory
+Glen burnie,GLEN BURNIE,Anne Arundel County,1,ZIP directory
+NEW CARROLLTON,NEW CARROLLTON,Prince George's County,1,ZIP directory
+BLATIMORE,BALTIMORE,Baltimore city,1,fuzzy match (review)
+GAMBRILLS,GAMBRILLS,Anne Arundel County,1,ZIP directory
+ASPEN HILL,ASPEN HILL,Montgomery County,1,ZIP directory
+FT. MEADE,FORT MEADE,Anne Arundel County,1,manual spelling fix
+Quantico,QUANTICO,Wicomico County,1,ZIP directory
+Ocean city,OCEAN CITY,Worcester County,1,ZIP directory
+Hyattsvill;e,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+ellicott City,ELLICOTT CITY,Howard County,1,ZIP directory
+Dundulk,DUNDULK,,1,unmatched
+Fairplay,FAIRPLAY,Washington County,1,ZIP directory
+Ocean  City,OCEAN CITY,Worcester County,1,fuzzy match (review)
+BELAIR,BEL AIR,Harford County,1,fuzzy match (review)
+Mount rainier,MOUNT RAINIER,Prince George's County,1,ZIP directory
+Fishing Creek,FISHING CREEK,Dorchester County,1,ZIP directory
+Rockville Rd,ROCKVILLE RD,,1,unmatched
+Fairmount Heights,FAIRMOUNT HEIGHTS,Prince George's County,1,ZIP directory
+MT. RAINER,MT. RAINER,,1,unmatched
+Williamsport,WILLIAMSPORT,Washington County,1,ZIP directory
+FAIRMOUNT HEIGHTS,FAIRMOUNT HEIGHTS,Prince George's County,1,ZIP directory
+anaoplis,ANAOPLIS,,1,unmatched
+POTOMAC,POTOMAC,Montgomery County,1,ZIP directory
+BERLIN,BERLIN,Worcester County,1,ZIP directory
+Timonium,TIMONIUM,Baltimore County,1,ZIP directory
+ABERDEEN,ABERDEEN,Harford County,1,ZIP directory
+"Bladensburg,",BLADENSBURG,Prince George's County,1,ZIP directory
+Hyattsvile,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+Ft. Washington,FT WASHINGTON,Prince George's County,1,fuzzy match (review)
+preston,PRESTON,Caroline County,1,ZIP directory
+CHEVERLY,CHEVERLY,Prince George's County,1,ZIP directory
+Naval Academy,NAVAL ACADEMY,Anne Arundel County,1,ZIP directory
+silver Springs,SILVER SPRING,Montgomery County,1,manual spelling fix
+Towsen,TOWSEN,,1,unmatched
+Manchester,MANCHESTER,Carroll County,1,ZIP directory
+ADELPHIA,ADELPHI,Prince George's County,1,fuzzy match (review)
+HYATTSVILE,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+Aldephi,ALDEPHI,,1,unmatched
+Aberdeen Proving Ground,ABERDEEN PROVING GROUND,Harford County,1,ZIP directory
+BISHOPVILLE,BISHOPVILLE,Worcester County,1,ZIP directory
+rosedale,ROSEDALE,Baltimore County,1,ZIP directory
+Lutherville,LUTHERVILLE,Baltimore County,1,ZIP directory
+Baltimotre,BALTIMORE,Baltimore city,1,fuzzy match (review)
+BALTIMMORE,BALTIMORE,Baltimore city,1,fuzzy match (review)
+GREENCASTLE,GREENCASTLE,,1,unmatched
+Arnold,ARNOLD,Anne Arundel County,1,ZIP directory
+cambridge,CAMBRIDGE,Dorchester County,1,ZIP directory
+Oxon Hil,OXON HILL,Prince George's County,1,fuzzy match (review)
+"Salisbury,",SALISBURY,Wicomico County,1,ZIP directory
+Sandy Spring,SANDY SPRING,Montgomery County,1,ZIP directory
+Woodbine,WOODBINE,Howard County,1,ZIP directory
+MARYDEL,MARYDEL,Caroline County,1,ZIP directory
+Ferderick,FREDERICK,Frederick County,1,fuzzy match (review)
+Adephi,ADELPHI,Prince George's County,1,fuzzy match (review)
+Springdale,SPRINGDALE,Prince George's County,1,ZIP directory
+BALTMORE,BALTIMORE,Baltimore city,1,fuzzy match (review)
+aberdeen,ABERDEEN,Harford County,1,ZIP directory
+Glen Arm,GLEN ARM,Baltimore County,1,ZIP directory
+oxon Hill,OXON HILL,Prince George's County,1,ZIP directory
+Salisbisb,SALISBISB,,1,unmatched
+PRINCESS ANNE,PRINCESS ANNE,Somerset County,1,ZIP directory
+BRENTWOOD,BRENTWOOD,Prince George's County,1,ZIP directory
+Dunblak,DUNBLAK,,1,unmatched
+upper marlboro,UPPER MARLBORO,Prince George's County,1,ZIP directory
+WASHINGTON D.C.,WASHINGTON D.C,,1,unmatched
+Tacoma Park,TAKOMA PARK,Montgomery County,1,fuzzy match (review)
+Federalsburg,FEDERALSBURG,Caroline County,1,ZIP directory
+Windsor,WINDSOR,,1,unmatched
+Sliver Spring,SILVER SPRING,Montgomery County,1,manual spelling fix
+Helenthorpe,HELENTHORPE,,1,unmatched
+Adelph,ADELPHI,Prince George's County,1,fuzzy match (review)
+BALTIMRE,BALTIMORE,Baltimore city,1,manual spelling fix
+Baltiomre,BALTIMORE,Baltimore city,1,manual spelling fix
+SEVERN,SEVERN,Anne Arundel County,1,ZIP directory
+"IJAMSVILLE, MD",IJAMSVILLE,Frederick County,1,ZIP directory
+Pocomke,POCOMKE,,1,unmatched
+"Aberdeen,",ABERDEEN,Harford County,1,ZIP directory
+Phillipsburg,PHILLIPSBURG,,1,unmatched
+MORAVIA,MORAVIA,,1,unmatched
+Fallston,FALLSTON,Harford County,1,ZIP directory
+SUITLAND,SUITLAND,Prince George's County,1,ZIP directory
+Fredricks,FREDERICK,Frederick County,1,fuzzy match (review)
+BALTIMOREB,BALTIMORE,Baltimore city,1,fuzzy match (review)
+Accokeek,ACCOKEEK,Prince George's County,1,ZIP directory
+"Silver Spring, MD",SILVER SPRING,Montgomery County,1,ZIP directory
+CLINTON,CLINTON,Prince George's County,1,ZIP directory
+BALTIMOTRE,BALTIMORE,Baltimore city,1,fuzzy match (review)
+berlin,BERLIN,Worcester County,1,ZIP directory
+catonsville,CATONSVILLE,Baltimore County,1,ZIP directory
+CABIN JOHN,CABIN JOHN,Montgomery County,1,ZIP directory
+PITTSVILE,PITTSVILLE,Wicomico County,1,fuzzy match (review)
+"HYATTSVILLE, MD",HYATTSVILLE,Prince George's County,1,ZIP directory
+"Gaithersburg, MD",GAITHERSBURG,Montgomery County,1,ZIP directory
+"Glen Burnie,",GLEN BURNIE,Anne Arundel County,1,ZIP directory
+CITY,CITY,,1,unmatched
+Frankford,FRANKFORD,,1,unmatched
+Silver Silver,SILVER SILVER,,1,unmatched
+Mt Rainier,MOUNT RAINIER,Prince George's County,1,fuzzy match (review)
+"Salisbury, MD 21801","SALISBURY, MD 21801",,1,unmatched
+Forte Meade,FORT MEADE,Anne Arundel County,1,fuzzy match (review)
+SilverSpringbal,SILVERSPRINGBAL,,1,unmatched
+sliver spring,SILVER SPRING,Montgomery County,1,manual spelling fix
+Marydale,MARYDALE,,1,unmatched
+Perry Hall,PERRY HALL,Baltimore County,1,ZIP directory
+Lexinton Park,LEXINGTON PARK,St. Mary's County,1,fuzzy match (review)
+21702,21702,,1,unmatched
+LOTHIAN,LOTHIAN,Anne Arundel County,1,ZIP directory
+"ocean city, MD",OCEAN CITY,Worcester County,1,ZIP directory
+Edgemere,EDGEMERE,Baltimore County,1,ZIP directory
+glen burnie,GLEN BURNIE,Anne Arundel County,1,ZIP directory
+silver springs,SILVER SPRING,Montgomery County,1,manual spelling fix
+"Princess Anne, MD",PRINCESS ANNE,Somerset County,1,ZIP directory
+EDGEWATER,EDGEWATER,Anne Arundel County,1,ZIP directory
+HYATTSVLLE,HYATTSVILLE,Prince George's County,1,fuzzy match (review)
+columbia,COLUMBIA,Howard County,1,ZIP directory
+Ellicott,ELLICOTT,,1,unmatched
+Baltomore,BALTIMORE,Baltimore city,1,fuzzy match (review)
+SAVAGE,SAVAGE,Howard County,1,ZIP directory
+Ferndale,FERNDALE,,1,unmatched
+dundalk,DUNDALK,Baltimore County,1,ZIP directory
+Glenn Burnie,GLEN BURNIE,Anne Arundel County,1,fuzzy match (review)
+Chicago,CHICAGO,,1,unmatched
+Huntingtown,HUNTINGTOWN,Calvert County,1,ZIP directory
+HANOVER,HANOVER,Anne Arundel County,1,ZIP directory
+easton,EASTON,Talbot County,1,ZIP directory
+WESTOER,WESTOVER,Somerset County,1,fuzzy match (review)
+Fulton,FULTON,Howard County,1,ZIP directory
+COLESVILLE,COLESVILLE,Montgomery County,1,ZIP directory
+MOUNT RAINER,MOUNT RAINIER,Prince George's County,1,fuzzy match (review)
+"Barstow,",BARSTOW,Calvert County,1,ZIP directory
+church Hill,CHURCH HILL,Queen Anne's County,1,ZIP directory
+Prince Frederick,PRINCE FREDERICK,Calvert County,1,ZIP directory
+FINKSBURG,FINKSBURG,Carroll County,1,ZIP directory
+"Salisbury, MD",SALISBURY,Wicomico County,1,ZIP directory
+21801,21801,,1,unmatched
+SNOWHILL,SNOW HILL,Worcester County,1,fuzzy match (review)
+Ashton-Sandy Spring,ASHTON-SANDY SPRING,,1,unmatched
+BARSTOW,BARSTOW,Calvert County,1,ZIP directory
+ACCOKEEK,ACCOKEEK,Prince George's County,1,ZIP directory
+Brandywine,BRANDYWINE,Prince George's County,1,ZIP directory
+Rossville,ROSSVILLE,,1,unmatched
+White Plains,WHITE PLAINS,Charles County,1,ZIP directory
+Cantonville,CATONSVILLE,Baltimore County,1,fuzzy match (review)
+Glen Burine,GLEN BURNIE,Anne Arundel County,1,fuzzy match (review)
+BROOKLN PARK,BROOKLYN PARK,Baltimore city,1,fuzzy match (review)
+Montgomery,MONTGOMERY,,1,unmatched
+COLOMBIA,COLUMBIA,Howard County,1,fuzzy match (review)
+Fort George Meade,FORT GEORGE G MEADE,Anne Arundel County,1,fuzzy match (review)
+21601,21601,,1,unmatched
+Geln Echo,GLEN ECHO,Montgomery County,1,fuzzy match (review)
+beltsville,BELTSVILLE,Prince George's County,1,ZIP directory
+Baltiimore,BALTIMORE,Baltimore city,1,fuzzy match (review)
+ROCKVILE,ROCKVILLE,Montgomery County,1,fuzzy match (review)
+BOWIE,BOWIE,Prince George's County,1,ZIP directory
+westminster,WESTMINSTER,Carroll County,1,ZIP directory
+Arizona,ARIZONA,,1,unmatched
+Chevy Chase,CHEVY CHASE,Montgomery County,1,ZIP directory
+WOODLAWN,WOODLAWN,Baltimore County,1,ZIP directory
+FORT MEAD,FORT MEADE,Anne Arundel County,1,manual spelling fix
+SEABROOK,SEABROOK,Prince George's County,1,ZIP directory
+Lothian,LOTHIAN,Anne Arundel County,1,ZIP directory
+Oxon Hill Rd.,OXON HILL RD,,1,unmatched
+Rosadale,ROSEDALE,Baltimore County,1,fuzzy match (review)
+FREDERICKS,FREDERICK,Frederick County,1,fuzzy match (review)
+"Jessup, MD",JESSUP,Howard County,1,ZIP directory
+Sparks Glencoe,SPARKS GLENCOE,Baltimore County,1,ZIP directory
+CLARKBURG,CLARKSBURG,Montgomery County,1,fuzzy match (review)
+BROOKLYN,BROOKLYN,Baltimore city,1,ZIP directory
+Brookyln,BROOKLYN,Baltimore city,1,fuzzy match (review)
+"Baltimore, Maryland",BALTIMORE,Baltimore city,1,ZIP directory
+jessup,JESSUP,Howard County,1,ZIP directory
+Owings Court,OWINGS COURT,,1,unmatched
+"CHEVERLY, MARYLAND",CHEVERLY,Prince George's County,1,ZIP directory
+Boyds,BOYDS,Montgomery County,1,ZIP directory
+city,CITY,,1,unmatched
+OLNEY,OLNEY,Montgomery County,1,ZIP directory
+PRINCE GEORGE,PRINCE GEORGE,,1,unmatched
+landham,LANHAM,Prince George's County,1,fuzzy match (review)
+WHITE MARSH,WHITE MARSH,Baltimore County,1,ZIP directory
+Unknown,UNKNOWN,,1,unmatched
+Suite 2000,SUITE 2000,,1,unmatched
+NOTTINGHAM,NOTTINGHAM,Baltimore County,1,ZIP directory
+Severna Park,SEVERNA PARK,Anne Arundel County,1,ZIP directory
