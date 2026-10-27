@@ -1,0 +1,225 @@
+city_clean,arrests,no_record,community,custody,office,county,lat,lon,name
+21601,1,0,1,0,0,Caroline County,,,21601
+21702,1,1,1,0,0,Frederick County,,,21702
+21801,1,1,1,0,0,,,,21801
+ABERDEEN,5,1,5,0,0,Harford County,39.5109,-76.1805,Aberdeen
+ABERDEEN PROVING GROUND,2,2,0,2,0,Harford County,,,Aberdeen Proving Ground
+ABINGDON,2,2,2,0,0,Harford County,39.4744,-76.2997,Abingdon
+ADELPHI,74,58,67,7,0,Prince George's County,,,Adelphi
+ALDEPHI,1,1,1,0,0,Prince George's County,,,Aldephi
+ANDREWS AIR FORCE BASE,9,7,5,4,0,Prince George's County,,,Andrews Air Force Base
+ANNAPOLIS,128,45,63,65,0,Anne Arundel County,38.991,-76.523,Annapolis
+ANNAPOLIS JUNCTION,5,4,4,1,0,Anne Arundel County,,,Annapolis Junction
+ANNE ARUNDEL COUNTY,1,0,0,1,0,Anne Arundel County,,,Anne Arundel County
+ARNOLD,1,1,1,0,0,Anne Arundel County,,,Arnold
+ASHTON-SANDY SPRING,1,0,1,0,0,Montgomery County,,,Ashton-Sandy Spring
+ASPEN HILL,1,0,1,0,0,Prince George's County,,,Aspen Hill
+BALTIMORE,1567,1021,1316,251,0,Baltimore city,39.298,-76.6197,Baltimore
+BARSTOW,12,2,0,12,0,Calvert County,38.5254,-76.6161,Barstow
+BEL AIR,85,2,3,82,0,Harford County,39.5348,-76.3358,Bel Air
+BELCAMP,3,0,3,0,0,Harford County,39.4756,-76.242,Belcamp
+BELTSVILLE,63,44,59,4,0,Prince George's County,39.0401,-76.9159,Beltsville
+BERLIN,43,27,41,2,0,Worcester County,38.3475,-75.1866,Berlin
+BERWYN HEIGHTS,3,2,3,0,0,Prince George's County,,,Berwyn Heights
+BETHESDA,19,12,18,1,0,Montgomery County,39.0426,-77.1461,Bethesda
+BISHOP,1,0,1,0,0,,,,Bishop
+BISHOPVILLE,4,3,4,0,0,Worcester County,38.4296,-75.1855,Bishopville
+BLADENSBURG,38,30,34,4,0,Prince George's County,38.9421,-76.9261,Bladensburg
+BOWIE,14,10,14,0,0,Prince George's County,38.9021,-76.8092,Bowie
+BRANDYWINE,1,0,1,0,0,Prince George's County,,,Brandywine
+BRENTWOOD,11,8,10,1,0,Prince George's County,38.9407,-76.9531,Brentwood
+BROOKLYN,49,37,46,3,0,Baltimore city,39.2298,-76.616,Brooklyn
+BROOKLYN PARK,3,3,3,0,0,Anne Arundel County,,,Brooklyn Park
+BURTONSVILLE,2,1,1,1,0,Montgomery County,,,Burtonsville
+CABIN JOHN,1,1,1,0,0,Montgomery County,,,Cabin John
+CAMBRIDGE,108,76,106,2,0,Dorchester County,38.5643,-76.0874,Cambridge
+CAPITOL HEIGHTS,25,15,25,0,0,Prince George's County,38.8551,-76.8883,Capitol Heights
+CATONSVILLE,36,28,33,3,0,Baltimore County,39.2782,-76.7401,Catonsville
+CENTREVILLE,44,4,9,35,0,Queen Anne's County,39.0564,-76.045,Centreville
+CHESTER,3,2,3,0,0,Queen Anne's County,38.9583,-76.2842,Chester
+CHESTERTOWN,8,1,6,2,0,Kent County,39.1235,-76.0862,Chestertown
+CHEVERLY,7,4,6,1,0,Prince George's County,,,Cheverly
+CHEVY CHASE,1,1,1,0,0,Montgomery County,,,Chevy Chase
+CHILLUM,6,2,3,3,0,Prince George's County,,,Chillum
+CHURCH HILL,1,1,1,0,0,Queen Anne's County,39.146,-75.988,Church Hill
+CITY,2,2,0,2,0,,,,City
+CLARKSBURG,6,3,6,0,0,Montgomery County,39.2387,-77.2794,Clarksburg
+CLINTON,6,1,6,0,0,Prince George's County,38.7549,-76.9026,Clinton
+COCKEYSVILLE,24,17,22,2,0,Baltimore County,39.4919,-76.6677,Cockeysville
+COLESVILLE,4,3,4,0,0,Montgomery County,,,Colesville
+COLLEGE PARK,48,35,43,5,0,Prince George's County,38.9398,-76.9178,College Park
+COLUMBIA,77,64,70,7,0,Howard County,39.1965,-76.8549,Columbia
+COTTAGE CITY,1,1,1,0,0,Prince George's County,,,Cottage City
+CUMBERLAND,25,0,2,23,0,Allegany County,39.6159,-78.7807,Cumberland
+CURTIS BAY,2,2,2,0,0,Baltimore city,39.2109,-76.5597,Curtis Bay
+DAMASCUS,4,2,3,1,0,Montgomery County,,,Damascus
+DELMAR,76,50,74,2,0,Wicomico County,38.4445,-75.5583,Delmar
+DENTON,21,4,8,13,0,Caroline County,38.8595,-75.8357,Denton
+DERWOOD,3,0,3,0,0,Montgomery County,39.1345,-77.1477,Derwood
+DISTRICT HEIGHTS,11,4,10,1,0,Prince George's County,38.8438,-76.8834,District Heights
+DUNBLAK,1,0,1,0,0,,,,Dunblak
+DUNDALK,45,26,40,5,0,Baltimore County,39.2655,-76.4935,Dundalk
+EAST NEW MARKET,6,5,6,0,0,Dorchester County,38.5921,-75.9568,East New Market
+EASTON,164,108,151,13,0,Talbot County,38.7734,-76.0729,Easton
+EDEN,10,9,10,0,0,Wicomico County,38.2807,-75.651,Eden
+EDGEMERE,1,1,1,0,0,Baltimore County,,,Edgemere
+EDGEWATER,9,7,8,1,0,Anne Arundel County,,,Edgewater
+EDGEWOOD,9,7,8,1,0,Harford County,39.4277,-76.3055,Edgewood
+ELDERSBURG,5,2,5,0,0,Carroll County,,,Eldersburg
+ELKRIDGE,61,47,58,3,0,Howard County,39.2058,-76.7531,Elkridge
+ELKTON,27,6,6,21,0,Cecil County,39.6166,-75.8396,Elkton
+ELLICOTT,1,1,0,1,0,Howard County,,,Ellicott
+ELLICOTT CITY,29,18,26,3,0,Howard County,39.2546,-76.8678,Ellicott City
+ESSEX,27,16,25,2,0,Baltimore County,39.3086,-76.4533,Essex
+FAIRMOUNT HEIGHTS,1,0,1,0,0,Prince George's County,,,Fairmount Heights
+FAIRPLAY,1,0,0,1,0,Baltimore city,39.5594,-77.7604,Fairplay
+FALLSTON,1,0,1,0,0,Harford County,,,Fallston
+FEDERALSBURG,1,1,1,0,0,Caroline County,38.7147,-75.7754,Federalsburg
+FERNDALE,1,1,1,0,0,Anne Arundel County,,,Ferndale
+FINKSBURG,3,3,3,0,0,Carroll County,39.4991,-76.9101,Finksburg
+FISHING CREEK,1,1,1,0,0,Dorchester County,,,Fishing Creek
+FOREST HEIGHTS,2,2,2,0,0,Prince George's County,,,Forest Heights
+FORT GEORGE G MEADE,1,1,0,1,0,Anne Arundel County,,,Fort George G Meade
+FORT MEADE,168,127,88,80,0,Anne Arundel County,,,Fort Meade
+FORT WASHINGTON,12,7,12,0,0,Prince George's County,38.7961,-76.9306,Fort Washington
+FRANKFORD,1,1,1,0,0,Worcester County,,,Frankford
+FREDERICK,279,96,120,159,0,Frederick County,39.4222,-77.4076,Frederick
+FRUITLAND,42,32,42,0,0,Wicomico County,38.3225,-75.6228,Fruitland
+FT WASHINGTON,1,0,1,0,0,Prince George's County,,,Ft Washington
+FULTON,1,1,1,0,0,Howard County,39.1502,-76.93,Fulton
+GAITHERSBURG,77,36,68,9,0,Montgomery County,39.1517,-77.1965,Gaithersburg
+GAMBRILLS,4,3,4,0,0,Anne Arundel County,39.0407,-76.6819,Gambrills
+GERMANTOWN,22,13,22,0,0,Montgomery County,39.1558,-77.2419,Germantown
+GLEN ARM,1,1,1,0,0,Baltimore County,,,Glen Arm
+GLEN BURNIE,91,43,59,32,0,Anne Arundel County,39.1021,-76.6015,Glen Burnie
+GLEN ECHO,29,23,24,5,0,Montgomery County,38.9693,-77.1435,Glen Echo
+GLENARDEN,3,2,2,1,0,Prince George's County,,,Glenarden
+GLENN DALE,3,1,3,0,0,Prince George's County,38.9766,-76.8053,Glenn Dale
+GRASONVILLE,19,10,19,0,0,Queen Anne's County,38.9456,-76.199700000000007,Grasonville
+GREENBELT,103,73,84,19,0,Prince George's County,39.0029,-76.8783,Greenbelt
+GREENCASTLE,1,1,0,1,0,,,,Greencastle
+GREENSBORO,3,2,3,0,0,Caroline County,38.9616,-75.8059,Greensboro
+GWYNN OAK,13,9,12,1,0,Baltimore County,39.3296,-76.7341,Gwynn Oak
+HAGERSTOWN,128,6,13,115,0,Washington County,39.6298,-77.7171,Hagerstown
+HALETHORPE,100,77,76,24,0,Baltimore County,39.2309,-76.6969,Halethorpe
+HAMPSTEAD,3,3,3,0,0,Carroll County,39.6146,-76.8644,Hampstead
+HANOVER,17,14,17,0,0,Anne Arundel County,39.1726,-76.7208,Hanover
+HARWOOD,1,0,1,0,0,Anne Arundel County,38.8582,-76.6145,Harwood
+HEBRON,10,8,10,0,0,Wicomico County,38.4026,-75.6963,Hebron
+HELENTHORPE,1,1,1,0,0,Baltimore County,,,Helenthorpe
+HENDERSON,1,1,1,0,0,Caroline County,39.0672,-75.7948,Henderson
+HILLCREST HEIGHTS,2,0,1,1,0,Prince George's County,,,Hillcrest Heights
+HUNTINGTOWN,1,0,1,0,0,Calvert County,,,Huntingtown
+HURLOCK,5,3,5,0,0,Caroline County,38.6438,-75.863,Hurlock
+HYATTSVILLE,541,401,499,42,0,Prince George's County,38.9637,-76.9395,Hyattsville
+ICE BALTIMORE OFFICES,889,680,0,0,889,Baltimore city,39.2876,-76.6175,ICE's Baltimore offices
+IJAMSVILLE,8,6,8,0,0,Frederick County,39.3267,-77.2964,Ijamsville
+JB ANDREWS,5,4,2,3,0,Prince George's County,,,Jb Andrews
+JESSUP,102,59,67,35,0,Howard County,39.1484,-76.7922,Jessup
+JOPPA,1,1,1,0,0,Harford County,39.4242,-76.3541,Joppa
+KENSINGTON,7,4,7,0,0,Montgomery County,39.0277,-77.0779,Kensington
+LA PLATA,7,3,5,2,0,Charles County,38.5257,-76.9865,La Plata
+LANDOVER,3,2,3,0,0,Prince George's County,,,Landover
+LANDOVER HILLS,2,2,2,0,0,Prince George's County,,,Landover Hills
+LANGLEY PARK,7,6,7,0,0,Prince George's County,,,Langley Park
+LANHAM,25,16,24,1,0,Prince George's County,38.9005,-76.8664,Lanham
+LANSDOWNE,1,1,1,0,0,Baltimore County,,,Lansdowne
+LAUREL,209,169,185,24,0,Prince George's County,39.0988,-76.8458,Laurel
+LEONARDTOWN,13,0,2,11,0,St. Mary's County,38.2774,-76.638,Leonardtown
+LEXINGTON PARK,3,1,3,0,0,St. Mary's County,,,Lexington Park
+LINTHICUM HEIGHTS,5,3,3,2,0,Anne Arundel County,39.2092,-76.6681,Linthicum Heights
+LOTHIAN,1,1,1,0,0,Anne Arundel County,,,Lothian
+LUTHERVILLE,1,1,1,0,0,Baltimore County,,,Lutherville
+LUTHERVILLE TIMONIUM,9,5,8,1,0,Baltimore County,39.4361,-76.6234,Lutherville Timonium
+MANCHESTER,1,0,1,0,0,Carroll County,39.6747,-76.8941,Manchester
+MARDELA SPRINGS,3,1,3,0,0,Wicomico County,,,Mardela Springs
+MARYDALE,1,0,1,0,0,,,,Marydale
+MARYDEL,26,16,26,0,0,Caroline County,39.1082,-75.762200000000007,Marydel
+MIDDLE RIVER,7,3,7,0,0,Baltimore County,39.3401,-76.4153,Middle River
+MIDDLETOWN,5,3,5,0,0,Frederick County,,,Middletown
+MONTGOMERY,1,1,1,0,0,,,,Montgomery
+MONTGOMERY VILLAGE,11,5,10,1,0,Montgomery County,39.1757,-77.1873,Montgomery Village
+MORAVIA,1,1,1,0,0,Frederick County,,,Moravia
+MORNINGSIDE,2,2,2,0,0,Prince George's County,,,Morningside
+MOUNT RAINIER,20,17,17,3,0,Prince George's County,38.9431,-76.9652,Mount Rainier
+MT. RAINER,1,0,1,0,0,,,,Mt. Rainer
+NAVAL ACADEMY,1,1,1,0,0,Anne Arundel County,,,Naval Academy
+NEW CARROLLTN,2,2,2,0,0,Prince George's County,,,New Carrolltn
+NEW CARROLLTON,15,6,14,1,0,Prince George's County,,,New Carrollton
+NOTTINGHAM,3,2,3,0,0,Baltimore County,39.3914,-76.4871,Nottingham
+OCEAN CITY,282,182,276,6,0,Worcester County,38.3365,-75.0849,Ocean City
+OCEAN PINES,8,4,8,0,0,Worcester County,,,Ocean Pines
+ODENTON,1,0,1,0,0,Anne Arundel County,39.0762,-76.6996,Odenton
+OLNEY,6,4,6,0,0,Montgomery County,39.1539,-77.0708,Olney
+OWINGS COURT,1,0,1,0,0,,,,Owings Court
+OWINGS MILLS,11,8,11,0,0,Baltimore County,39.4269,-76.7769,Owings Mills
+OXON HILL,48,30,44,4,0,Prince George's County,38.8071,-76.9898,Oxon Hill
+OXON HILL RD,1,1,1,0,0,,,,Oxon Hill Rd
+PARKVILLE,7,2,6,1,0,Baltimore County,39.3876,-76.5418,Parkville
+PARSONSBURG,13,10,13,0,0,Wicomico County,38.3914,-75.4737,Parsonsburg
+PASADENA,2,2,2,0,0,Anne Arundel County,39.0474,-76.545,Pasadena
+PATUXENT RIVER,2,0,1,1,0,Prince George's County,38.2791,-76.4381,Patuxent River
+PHILLIPSBURG,1,0,1,0,0,,,,Phillipsburg
+PHOENIX,1,0,1,0,0,Baltimore County,39.4833,-76.5776,Phoenix
+PIKESVILLE,7,4,7,0,0,Baltimore County,39.3753,-76.7258,Pikesville
+PITTSVILLE,22,14,22,0,0,Wicomico County,38.3755,-75.4076,Pittsville
+POCOMKE,1,1,1,0,0,,,,Pocomke
+POCOMOKE CITY,8,6,7,1,0,Worcester County,38.0714,-75.555,Pocomoke City
+POTOMAC,8,2,5,3,0,Montgomery County,39.0914,-77.1999,Potomac
+PRESTON,22,14,22,0,0,Caroline County,38.7465,-75.9163,Preston
+PRINCE FREDERICK,1,0,0,1,0,Calvert County,38.5336,-76.5955,Prince Frederick
+PRINCE GEORGE,1,1,1,0,0,,,,Prince George
+PRINCESS ANNE,35,21,35,0,0,Somerset County,38.1919,-75.7072,Princess Anne
+QUANTICO,1,0,1,0,0,Wicomico County,38.3339,-75.7851,Quantico
+QUEEN ANNE'S COUNTY,1,1,1,0,0,Queen Anne's County,,,Queen Anne's County
+QUEENSTOWN,7,5,7,0,0,Queen Anne's County,39.0025,-76.1424,Queenstown
+RANDALLSTOWN,23,13,22,1,0,Baltimore County,39.3746,-76.8002,Randallstown
+REISTERSTOWN,3,2,3,0,0,Baltimore County,39.46,-76.8135,Reisterstown
+RIVERDALE,63,46,57,6,0,Prince George's County,38.9629,-76.9235,Riverdale
+RIVERDALE PARK,10,7,10,0,0,Prince George's County,,,Riverdale Park
+RIVERSIDE,2,2,2,0,0,Baltimore city,,,Riverside
+ROCKVILLE,90,21,36,54,0,Montgomery County,39.0872,-77.1466,Rockville
+ROCKVILLE RD,1,0,0,1,0,Baltimore city,,,Rockville Rd
+ROSEDALE,45,29,42,3,0,Baltimore County,39.3361,-76.5014,Rosedale
+SALISBISB,1,1,1,0,0,,,,Salisbisb
+SALISBURY,915,557,870,45,0,Wicomico County,38.3775,-75.6056,Salisbury
+"SALISBURY, MD 21801",1,1,1,0,0,,,,"Salisbury, Md 21801"
+SAVAGE,4,4,3,1,0,Howard County,39.138,-76.8218,Savage
+SCAGGSVILLE,4,4,4,0,0,Howard County,,,Scaggsville
+SEABROOK,1,1,1,0,0,Prince George's County,,,Seabrook
+SEAT PLEASANT,2,1,2,0,0,Baltimore city,,,Seat Pleasant
+SEVERNA PARK,1,1,1,0,0,Prince George's County,39.0811,-76.5577,Severna Park
+SILVER SILVER,1,1,1,0,0,,,,Silver Silver
+SILVER SPRING,707,550,656,51,0,Montgomery County,39.0182,-77.0206,Silver Spring
+SILVERSPRINGBAL,1,1,1,0,0,Prince George's County,,,Silverspringbal
+SNOW HILL,36,7,15,21,0,Worcester County,38.1868,-75.405,Snow Hill
+SPARKS GLENCOE,1,1,1,0,0,Baltimore city,39.5483,-76.6851,Sparks Glencoe
+SPRINGDALE,1,0,1,0,0,Prince George's County,,,Springdale
+STEVENSVILLE,2,0,2,0,0,Queen Anne's County,38.9394,-76.3371,Stevensville
+SUDLERSVILLE,7,7,7,0,0,Queen Anne's County,39.1823,-75.85,Sudlersville
+SUITE 2000,1,1,1,0,0,,,,Suite 2000
+SUITLAND,6,4,5,1,0,Prince George's County,38.8456,-76.9231,Suitland
+SYKESVILLE,3,1,2,1,0,Carroll County,39.4567,-76.9696,Sykesville
+TAKOMA,2,1,2,0,0,Montgomery County,,,Takoma
+TAKOMA PARK,81,61,71,10,0,Montgomery County,38.9805,-77.0041,Takoma Park
+TEMPLE HILLS,18,8,14,4,0,Prince George's County,38.8181,-76.9467,Temple Hills
+TIMONIUM,1,1,1,0,0,Baltimore County,,,Timonium
+TOWSON,86,4,19,67,0,Baltimore County,39.4052,-76.5971,Towson
+TRAPPE,19,15,19,0,0,Talbot County,38.6647,-76.0507,Trappe
+UNKNOWN,3,0,1,2,0,,,,Unknown
+UPPER MARLBORO,22,6,19,3,0,Prince George's County,38.8342,-76.7982,Upper Marlboro
+VIENNA,8,6,8,0,0,Dorchester County,38.4774,-75.8729,Vienna
+WALDORF,6,2,5,1,0,Charles County,38.59,-76.9326,Waldorf
+WASHINGTON D.C,1,1,1,0,0,,,,Washington D.c
+WASHINGTON DC,4,4,4,0,0,,,,Washington Dc
+WESTMINSTER,59,21,25,34,0,Carroll County,39.5856,-77.005,Westminster
+WESTOVER,42,5,8,34,0,Somerset County,38.0969,-75.8144,Westover
+WHALEYVILLE,5,2,5,0,0,Worcester County,38.4121,-75.2811,Whaleyville
+WHEATON,3,1,3,0,0,Montgomery County,,,Wheaton
+WHITE MARSH,9,8,8,1,0,Baltimore County,39.3923,-76.4132,White Marsh
+WHITE PLAINS,1,1,1,0,0,Charles County,38.5974,-76.9903,White Plains
+WILLARDS,18,13,18,0,0,Wicomico County,38.3939,-75.3552,Willards
+WILLIAMSPORT,1,0,1,0,0,Washington County,,,Williamsport
+WINDSOR MILL,12,9,12,0,0,Baltimore County,39.3331,-76.7849,Windsor Mill
+WOODLAWN,2,1,2,0,0,Baltimore County,,,Woodlawn
+WOODSTOCK,3,2,3,0,0,Baltimore County,39.3498,-76.8456,Woodstock
