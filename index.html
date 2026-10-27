@@ -377,7 +377,7 @@
           <div class="card-legend"><span><i style="background:#1979b9"></i>Destination country</span></div>
         </div>
         <div class="step" data-step="1">
-          <h4 class="card-hed">271 were deported somewhere else.</h4>
+          <h4 class="card-hed">271 landed somewhere else.</h4>
           <p class="card-body">They were sent to a country other than the one ICE lists as their citizenship. 191 went
             to Mexico, most of them citizens of El Salvador, Guatemala or Honduras; 154 of the 271 had no prior
             conviction or pending charge.</p>
@@ -394,111 +394,113 @@
       </div>
     </section>
 
-    <div class="limits">
-      <h3>What the records can't tell us</h3>
-      <ul>
-        <li><b>Why ICE arrested someone.</b> The records show criminal history and how an arrest happened, not the
-          reason for it.</li>
-        <li><b>A complete criminal history.</b> "No record" reflects ICE's systems at the time of arrest, which can be
-          incomplete.</li>
-        <li><b>Exact locations.</b> ICE often records a general area rather than an address. CNS placed arrests by the
-          city or county ICE listed.</li>
-        <li><b>Final counts for recent months.</b> ICE updates its records over time, and the latest months may grow.
-        </li>
-        <li><b>Every 287(g) arrest.</b> Only arrests ICE itself coded as 287(g) are counted as such.</li>
-      </ul>
-    </div>
-    <section class="methods">
-      <h2>How we did this analysis</h2>
+    <div class="col">
 
-      <h3>The records</h3>
-      <p>This analysis uses U.S. Immigration and Customs Enforcement records that the Deportation Data Project, a
-        research group at the University of California, Berkeley, and UCLA, obtained through <a
-          href="https://deportationdata.org/foia.html">Freedom of Information Act lawsuits</a> and published on its <a
-          href="https://deportationdata.org/data/processed/ice.html">data page</a>. We used the project's release of
-        Aug. 24, 2026, which covers Oct. 1, 2022, through Aug. 6, 2026, and four of its files: arrests, detainers,
-        arrests linked to detention stays, and detention stints. In every file, we removed rows the project flags as
-        likely duplicates, using its <code>duplicate_drop_row</code> column.</p>
+      <div class="limits">
+        <h3>What the records can't tell us</h3>
+        <ul>
+          <li><b>Why ICE arrested someone.</b> The records show criminal history and how an arrest happened, not the
+            reason for it.</li>
+          <li><b>A complete criminal history.</b> "No record" reflects ICE's systems at the time of arrest, which can be
+            incomplete.</li>
+          <li><b>Exact locations.</b> ICE often records a general area rather than an address. CNS placed arrests by the
+            city or county ICE listed.</li>
+          <li><b>Final counts for recent months.</b> ICE updates its records over time, and the latest months may grow.
+          </li>
+          <li><b>Every 287(g) arrest.</b> Only arrests ICE itself coded as 287(g) are counted as such.</li>
+        </ul>
+      </div>
+      <section class="methods">
+        <h2>How we did this analysis</h2>
 
-      <h3>Arrests</h3>
-      <p>In the arrests file, each row is one ICE arrest. We counted an arrest as a Maryland arrest when the project's
-        <code>apprehension_state_filled_in</code> column says Maryland. That column uses the state ICE recorded and,
-        when ICE left it blank, fills it in from the arrest location; it identifies 12,859 Maryland rows, 214 more
-        than ICE's own state field. After removing 218 likely duplicates, 12,641 arrests remained. Some people were
-        arrested more than once, and 28 rows have no person identifier (<code>unique_identifier</code>), so the story
-        counts arrests rather than people. Each dot on the title screen is one Maryland arrest from January through
-        July 2026: 2,952 red dots for people with no prior conviction or pending charge, and 1,230 gray dots for
-        people with a prior conviction or a pending charge.
-      </p>
-      <p>Criminal history comes from <code>apprehension_criminality</code>, which records what ICE's systems showed at
-        the time of arrest: "Convicted Criminal," "Pending Criminal Charges" or "Other Immigration Violator." The
-        story calls the last group people with no prior conviction or pending charge. Whether a person already had a
-        final order of removal comes from <code>final_order_before_apprehension</code>.</p>
-      <p>How an arrest happened comes from <code>apprehension_method_simple</code>. We treated "Custodial Arrest,"
-        which includes ICE's Criminal Alien Program, and "287(g) Program" as custodial arrests, meaning a jail or
-        prison handed the person to ICE. All other arrests, mostly those ICE codes "At-Large Arrest," are
-        non-custodial. Arrests at ICE's two Baltimore offices were identified from <code>event_landmark</code>, where
-        ICE lists them as "NON DETAINED ENCOUNTERS AT BAL ERO" and "BALTIMORE ISAP OFFICE."</p>
-      <p>The story uses two time periods. Year-over-year comparisons use Jan. 1 through July 31 of each year, because
-        the records end Aug. 6. Everything else covers Jan. 20, 2025, when President Donald Trump's second term began,
-        through Aug. 6, 2026, unless the text says otherwise. Comparisons around Maryland's 287(g) ban are
-        monthly averages over periods of different lengths, Jan. 20, 2025, through Feb. 16, 2026 (393 days), and Feb.
-        17 through Aug. 6, 2026 (171 days): each count was divided by the number of days and multiplied by 30.4375,
-        the average length of a month. National figures come from the same file, using all states. The state
-        comparison includes the 43 states and territories with at least 1,000 arrests since Jan. 20, 2025, and leaves
-        out the District of Columbia.</p>
+        <h3>The records</h3>
+        <p>This analysis uses U.S. Immigration and Customs Enforcement records that the Deportation Data Project, a
+          research group at the University of California, Berkeley, and UCLA, obtained through <a
+            href="https://deportationdata.org/foia.html">Freedom of Information Act lawsuits</a> and published on its <a
+            href="https://deportationdata.org/data/processed/ice.html">data page</a>. We used the project's release of
+          Aug. 24, 2026, which covers Oct. 1, 2022, through Aug. 6, 2026, and four of its files: arrests, detainers,
+          arrests linked to detention stays, and detention stints. In every file, we removed rows the project flags as
+          likely duplicates, using its <code>duplicate_drop_row</code> column.</p>
 
-      <h3>Places</h3>
-      <p>To place arrests in counties, we first checked whether <code>event_landmark</code> names a county or
-        Baltimore City. If it did not, we used the city ICE recorded in <code>apprehension_city_original</code>,
-        matched to a county through a lookup table CNS built from every spelling in the data. Most spellings matched a
-        ZIP code directory directly; others were corrected by hand or matched to the closest valid spelling, and a few
-        could not be placed. In all, 98.7% of arrests, and 99.5% of those since Jan. 20, 2025, were assigned a county.
-        Arrest rates use 2020 census populations
-        from the Maryland Department of Planning and leave out arrests at ICE's Baltimore offices, which people come
-        to from across the state. The Eastern Shore includes Caroline, Cecil, Dorchester, Kent, Queen Anne's,
-        Somerset, Talbot, Wicomico and Worcester counties. Map circles are placed at the center of each city.</p>
+        <h3>Arrests</h3>
+        <p>In the arrests file, each row is one ICE arrest. We counted an arrest as a Maryland arrest when the project's
+          <code>apprehension_state_filled_in</code> column says Maryland. That column uses the state ICE recorded and,
+          when ICE left it blank, fills it in from the arrest location; it identifies 12,859 Maryland rows, 214 more
+          than ICE's own state field. After removing 218 likely duplicates, 12,641 arrests remained. Some people were
+          arrested more than once, and 28 rows have no person identifier (<code>unique_identifier</code>), so the story
+          counts arrests rather than people. Each dot on the title screen is one Maryland arrest from January through
+          July 2026: 2,952 red dots for people with no prior conviction or pending charge, and 1,230 gray dots for
+          people with a prior conviction or a pending charge.
+        </p>
+        <p>Criminal history comes from <code>apprehension_criminality</code>, which records what ICE's systems showed at
+          the time of arrest: "Convicted Criminal," "Pending Criminal Charges" or "Other Immigration Violator." The
+          story calls the last group people with no prior conviction or pending charge. Whether a person already had a
+          final order of removal comes from <code>final_order_before_apprehension</code>.</p>
+        <p>How an arrest happened comes from <code>apprehension_method_simple</code>. We treated "Custodial Arrest,"
+          which includes ICE's Criminal Alien Program, and "287(g) Program" as custodial arrests, meaning a jail or
+          prison handed the person to ICE. All other arrests, mostly those ICE codes "At-Large Arrest," are
+          non-custodial. Arrests at ICE's two Baltimore offices were identified from <code>event_landmark</code>, where
+          ICE lists them as "NON DETAINED ENCOUNTERS AT BAL ERO" and "BALTIMORE ISAP OFFICE."</p>
+        <p>The story uses two time periods. Year-over-year comparisons use Jan. 1 through July 31 of each year, because
+          the records end Aug. 6. Everything else covers Jan. 20, 2025, when President Donald Trump's second term began,
+          through Aug. 6, 2026, unless the text says otherwise. Comparisons around Maryland's 287(g) ban are
+          monthly averages over periods of different lengths, Jan. 20, 2025, through Feb. 16, 2026 (393 days), and Feb.
+          17 through Aug. 6, 2026 (171 days): each count was divided by the number of days and multiplied by 30.4375,
+          the average length of a month. National figures come from the same file, using all states. The state
+          comparison includes the 43 states and territories with at least 1,000 arrests since Jan. 20, 2025, and leaves
+          out the District of Columbia.</p>
 
-      <h3>Detainers</h3>
-      <p>In the detainers file, each row is one detainer: a request from ICE that a jail or prison hold a person or
-        notify the agency before releasing them. We kept detainers sent to facilities in Maryland
-        (<code>facility_state</code>) and dated them by <code>detainer_prepare_date</code>. ICE does not say what kind
-        of facility each one is, so CNS sorted the names in <code>detention_facility</code> into county jails, state
-        prisons and state-run jails, federal custody, police or courts, and ICE offices, using keywords in the names.
-        How a detainer ended comes from <code>detainer_lift_reason</code>; "Booked into Detention" means ICE took the
-        person into custody. Detainers closed as duplicates or replaced by a new form were left out of those outcome
-        shares.</p>
+        <h3>Places</h3>
+        <p>To place arrests in counties, we first checked whether <code>event_landmark</code> names a county or
+          Baltimore City. If it did not, we used the city ICE recorded in <code>apprehension_city_original</code>,
+          matched to a county through a lookup table CNS built from every spelling in the data. Most spellings matched a
+          ZIP code directory directly; others were corrected by hand or matched to the closest valid spelling, and a few
+          could not be placed. In all, 98.7% of arrests, and 99.5% of those since Jan. 20, 2025, were assigned a county.
+          Arrest rates use 2020 census populations
+          from the Maryland Department of Planning and leave out arrests at ICE's Baltimore offices, which people come
+          to from across the state. The Eastern Shore includes Caroline, Cecil, Dorchester, Kent, Queen Anne's,
+          Somerset, Talbot, Wicomico and Worcester counties. Map circles are placed at the center of each city.</p>
 
-      <h3>Detention and departures</h3>
-      <p>The project's file linking arrests to detention has one row per arrest, with the person's ICE detention stay
-        attached. Hold room times come from <code>book_in_date_time_first</code> and
-        <code>book_out_date_time_first</code> for people whose first stop (<code>detention_facility_first</code>) was
-        the Baltimore hold room: the hours between the two, summarized as a monthly median by the month of book-in, in
-        Eastern time. People detained since Jan. 20, 2025, are those with <code>has_detention_stay</code>. Because each
-        row is an arrest, a person detained after two arrests appears twice: the 8,319 detention stays involve 8,279
-        people, and counts of people use <code>unique_identifier</code> to count each person once; where they
-        spent the longest part of their detention comes from <code>detention_facility_state_longest</code>. A recorded
-        departure from the country is a non-missing <code>departed_date</code>, which includes removals and voluntary
-        departures. Release and continued detention come from <code>stay_release_reason_simple</code>.
-      </p>
-      <p>A person was counted as sent to a country other than their own when <code>departure_country</code> differs
-        from <code>citizenship_country</code>; one record listing "KOREA" and "SOUTH KOREA" was treated as the same
-        country. Departure counts cover people arrested since Jan. 20, 2025. These fields come from this linked file,
-        which draws on ICE's detention and removal records; across all the records, the arrests file has slightly
-        fewer departures (7,536 compared with 7,611). Globe circles are placed at the
-        center of each country, not the arrival point.</p>
+        <h3>Detainers</h3>
+        <p>In the detainers file, each row is one detainer: a request from ICE that a jail or prison hold a person or
+          notify the agency before releasing them. We kept detainers sent to facilities in Maryland
+          (<code>facility_state</code>) and dated them by <code>detainer_prepare_date</code>. ICE does not say what kind
+          of facility each one is, so CNS sorted the names in <code>detention_facility</code> into county jails, state
+          prisons and state-run jails, federal custody, police or courts, and ICE offices, using keywords in the names.
+          How a detainer ended comes from <code>detainer_lift_reason</code>; "Booked into Detention" means ICE took the
+          person into custody. Detainers closed as duplicates or replaced by a new form were left out of those outcome
+          shares.</p>
 
-      <h3>Facilities and paths</h3>
-      <p>In the detention stints file, each row is one stop at one facility within a person's detention stay. We kept
-        the stops for the stays above, matched on <code>stay_ID</code>. The number of facilities a person passed
-        through counts distinct <code>detention_facility_code</code> values; time in Louisiana and at Guantánamo Bay
-        comes from the <code>state</code> column, where ICE codes Guantánamo as "CU." To trace paths, we put each
-        person's stops in order of <code>book_in_date_time</code> and merged back-to-back stops at the same facility.
-        The map shows the single most common path, followed by 360 people, and the most common path with five stops,
-        followed by 25. Facilities are placed at the center of the city where they are located. Times on that route
-        are medians for the group, measured from <code>book_in_date_time</code> to <code>book_out_date_time</code>; no
-        individual's record is shown. Paths for people still detained when the records end may be incomplete.</p>
-    </section>
+        <h3>Detention and departures</h3>
+        <p>The project's file linking arrests to detention has one row per arrest, with the person's ICE detention stay
+          attached. Hold room times come from <code>book_in_date_time_first</code> and
+          <code>book_out_date_time_first</code> for people whose first stop (<code>detention_facility_first</code>) was
+          the Baltimore hold room: the hours between the two, summarized as a monthly median by the month of book-in, in
+          Eastern time. People detained since Jan. 20, 2025, are those with <code>has_detention_stay</code>. Because
+          each row is an arrest, a person detained after two arrests appears twice: the 8,319 detention stays involve
+          8,279 people, and counts of people use <code>unique_identifier</code> to count each person once; where they
+          spent the longest part of their detention comes from <code>detention_facility_state_longest</code>. A recorded
+          departure from the country is a non-missing <code>departed_date</code>, which includes removals and voluntary
+          departures. Release and continued detention come from <code>stay_release_reason_simple</code>.
+        </p>
+        <p>A person was counted as sent to a country other than their own when <code>departure_country</code> differs
+          from <code>citizenship_country</code>; one record listing "KOREA" and "SOUTH KOREA" was treated as the same
+          country. Departure counts cover people arrested since Jan. 20, 2025. These fields come from this linked file,
+          which draws on ICE's detention and removal records; across all the records, the arrests file has slightly
+          fewer departures (7,536 compared with 7,611). Globe circles are placed at the
+          center of each country, not the arrival point.</p>
+
+        <h3>Facilities and paths</h3>
+        <p>In the detention stints file, each row is one stop at one facility within a person's detention stay. We kept
+          the stops for the stays above, matched on <code>stay_ID</code>. The number of facilities a person passed
+          through counts distinct <code>detention_facility_code</code> values; time in Louisiana and at Guantánamo Bay
+          comes from the <code>state</code> column, where ICE codes Guantánamo as "CU." To trace paths, we put each
+          person's stops in order of <code>book_in_date_time</code> and merged back-to-back stops at the same facility.
+          The map shows the single most common path, followed by 360 people, and the most common path with five stops,
+          followed by 25. Facilities are placed at the center of the city where they are located. Times on that route
+          are medians for the group, measured from <code>book_in_date_time</code> to <code>book_out_date_time</code>; no
+          individual's record is shown. Paths for people still detained when the records end may be incomplete.</p>
+      </section>
     </div>
   </main>
 
