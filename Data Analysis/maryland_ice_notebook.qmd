@@ -680,15 +680,31 @@ median(hold_room$hours[hold_room$book_in_date_time_first < as.POSIXct("2025-01-0
 
 ## 3.2 Who was detained since Jan. 20, 2025
 
+Each row here is one arrest with its detention stay, so a person detained twice shows up twice. We count stays first, then people, using the person ID (`unique_identifier`). From here on, when we say "people," we count each person once.
+
 ```{r}
 detained <- md_joined |> filter(apprehension_date >= inauguration, has_detention_stay %in% TRUE)
-tibble(people = nrow(detained),
-       longest_stay_outside_md = round(mean(detained$detention_facility_state_longest != "MD"), 3),
-       first_stop_salisbury = sum(detained$detention_facility_first == "SALISBURY HOLD ROOM", na.rm = TRUE)) |>
+tibble(detention_stays = nrow(detained),
+       people = n_distinct(detained$unique_identifier, na.rm = TRUE),
+       missing_person_id = sum(is.na(detained$unique_identifier))) |>
+  show_all()
+detained |> count(unique_identifier, name = "stays") |> count(stays, name = "people") |>
+  show_all()
+
+# one row per person: did any of their stays have the longest part outside Maryland, or start in Salisbury?
+detained_people <- detained |>
+  group_by(unique_identifier) |>
+  summarise(longest_outside_md = any(detention_facility_state_longest != "MD", na.rm = TRUE),
+            first_stop_salisbury = any(detention_facility_first == "SALISBURY HOLD ROOM", na.rm = TRUE))
+tibble(people = nrow(detained_people),
+       longest_outside_md = sum(detained_people$longest_outside_md),
+       share_longest_outside_md = round(mean(detained_people$longest_outside_md), 3),
+       first_stop_salisbury = sum(detained_people$first_stop_salisbury)) |>
   show_all()
 ```
 
-- **8,319** people detained. **90.4%** spent the longest part of their detention outside Maryland. **1,843** went to the Salisbury hold room first.
+- **8,319** detention stays, of **8,279** people. **40** people were detained twice, after two separate arrests.
+- Counting each person once: **7,499** (**90.6%**) spent the longest part of a detention outside Maryland, and **1,836** went to the Salisbury hold room first.
 
 ## 3.3 What happened to people with no record arrested in 2025
 
@@ -697,14 +713,14 @@ People with no record arrested Jan. 20–Dec. 31, 2025, and their status as of e
 ```{r}
 outcome_2025 <- md_joined |>
   filter(apprehension_date >= inauguration, year(apprehension_date) == 2025, apprehension_criminality == no_record_label) |>
-  summarise(people = n(),
+  summarise(arrests = n(), people = n_distinct(unique_identifier, na.rm = TRUE),
             left_country = round(mean(!is.na(departed_date)), 3),
             released = round(mean(stay_release_reason_simple %in% "Released"), 3),
             still_detained = round(mean(str_starts(coalesce(stay_release_reason_simple, ""), "Not released")), 3))
 outcome_2025 |> show_all()
 ```
 
-- **2,635** people. **76.5%** left the country, **14.4%** were released and **3.7%** were still detained. These don't add to 100%, because some people have no clear status.
+- **2,635** arrests of **2,623** people. Of those arrests, **76.5%** ended with the person leaving the country, **14.4%** were released and **3.7%** were still detained. These don't add to 100%, because some people have no clear status.
 
 ## 3.4 Where people were sent
 
@@ -732,7 +748,9 @@ departed <- md_joined |> filter(apprehension_date >= inauguration, !is.na(depart
 departed$other <- other_country(departed)
 
 tibble(departures = nrow(departed),
+       people_departed = n_distinct(departed$unique_identifier, na.rm = TRUE),
        to_another_country = sum(departed$other),
+       people_to_another_country = n_distinct(departed$unique_identifier[departed$other], na.rm = TRUE),
        of_those_to_mexico = sum(departed$other & departed$departure_country == "MEXICO"),
        of_those_no_record = sum(departed$other & departed$apprehension_criminality == no_record_label)) |>
   show_all()
@@ -746,7 +764,7 @@ departed |> filter(other, departure_country %in% c("GHANA", "SIERRA LEONE")) |> 
   show_all()
 ```
 
-- **6,084** departures of people arrested since Jan. 20, 2025. The most went to Guatemala (**1,840**), El Salvador (**1,188**), Mexico (**1,012**) and Honduras (**980**).
+- **6,084** departures (of **6,043** people) arrested since Jan. 20, 2025. The most went to Guatemala (**1,840**), El Salvador (**1,188**), Mexico (**1,012**) and Honduras (**980**).
 - **271** went to a country other than the person's own: **191** to Mexico, and **154** of the 271 had no record.
 - Of the 191 sent to Mexico, most were Salvadorans (**59**), Guatemalans (**48**) and Hondurans (**39**), then Venezuelans (**23**) and Nicaraguans (**14**). Only **4** were Cuban.
 - A few West Africans were sent to other West African countries, such as **5** Nigerians to Ghana. These are destinations as ICE recorded them. Mexico is often a country people crossed on the way north.
@@ -757,13 +775,16 @@ departed |> filter(other, departure_country %in% c("GHANA", "SIERRA LEONE")) |> 
 
 Each stint is one stop at one facility. The file is huge (3.2 million rows), so we filter inside the file and only bring in the stops for the people detained in Part 3.2.
 
+We keep each stay's person ID, so we can count people, not stays.
+
 ```{r}
-stays <- detained |> distinct(stay_ID, apprehension_criminality, departed = !is.na(departed_date))
+stays <- detained |> distinct(stay_ID, person = unique_identifier, apprehension_criminality, departed = !is.na(departed_date))
 
 md_stints <- open_dataset("data/raw/detention-stints-latest.parquet") |>
   filter(stay_ID %in% stays$stay_ID, !coalesce(duplicate_drop_row, FALSE)) |>
   select(stay_ID, detention_facility, detention_facility_code, city, state, book_in_date_time, book_out_date_time) |>
   collect() |>
+  left_join(stays |> select(stay_ID, person), by = "stay_ID") |>
   arrange(stay_ID, book_in_date_time)
 nrow(md_stints)
 ```
@@ -773,25 +794,27 @@ nrow(md_stints)
 ## 4.1 How many facilities, and where
 
 ```{r}
-per_person <- md_stints |> group_by(stay_ID) |> summarise(facilities = n_distinct(detention_facility_code))
-tibble(median_facilities = median(per_person$facilities),
+# facilities per person, across all of that person's stays
+per_person <- md_stints |> group_by(person) |> summarise(facilities = n_distinct(detention_facility_code))
+tibble(people = nrow(per_person),
+       median_facilities = median(per_person$facilities),
        five_or_more = sum(per_person$facilities >= 5),
        share_5_or_more = round(mean(per_person$facilities >= 5), 3),
-       held_in_louisiana = n_distinct(md_stints$stay_ID[md_stints$state == "LA"]),
-       alexandria_staging = n_distinct(md_stints$stay_ID[md_stints$detention_facility == "ALEXANDRIA STAGING FACILITY"]),
-       guantanamo = n_distinct(md_stints$stay_ID[md_stints$state == "CU"])) |>
+       held_in_louisiana = n_distinct(md_stints$person[md_stints$state == "LA"]),
+       alexandria_staging = n_distinct(md_stints$person[md_stints$detention_facility == "ALEXANDRIA STAGING FACILITY"]),
+       guantanamo = n_distinct(md_stints$person[md_stints$state == "CU"])) |>
   show_all()
-md_stints |> group_by(detention_facility, state) |> summarise(people = n_distinct(stay_ID), .groups = "drop") |> arrange(desc(people)) |> head(5) |>
+md_stints |> group_by(detention_facility, state) |> summarise(people = n_distinct(person), .groups = "drop") |> arrange(desc(people)) |> head(5) |>
   show_all()
 ```
 
-- Median: **3** different facilities per person. **1,603** people (**19.3%**) were held in five or more.
-- **4,613** were held in Louisiana at some point. **1,905** passed through the Alexandria Staging Facility. **14** were held at Guantánamo Bay (state code CU).
-- The Baltimore hold room held **7,286** of them.
+- **8,279** people. Median: **3** different facilities per person. **1,613** people (**19.5%**) were held in five or more.
+- **4,607** were held in Louisiana at some point. **1,905** passed through the Alexandria Staging Facility. **14** were held at Guantánamo Bay (state code CU).
+- The Baltimore hold room held **7,253** of them.
 
 ## 4.2 Paths: the order of stops
 
-For each person, we list their stops in order of book-in time. If someone shows up twice in a row at the same facility (booked out and back in), we count that as one stop. Then we count how many people took each exact path.
+For each detention stay, we list the stops in order of book-in time. If someone shows up twice in a row at the same facility (booked out and back in), we count that as one stop. Then we count how many people took each exact path. (A person detained twice has two paths.)
 
 ```{r}
 stops <- md_stints |>
@@ -800,15 +823,16 @@ stops <- md_stints |>
   group_by(stay_ID, stop, detention_facility, city, state) |>
   summarise(book_in = first(book_in_date_time), book_out = last(book_out_date_time), .groups = "drop")
 
-paths <- stops |> group_by(stay_ID) |> summarise(path = paste(detention_facility, collapse = " -> "), n_stops = n())
-paths |> count(path, sort = TRUE) |> head(5) |>
+paths <- stops |> group_by(stay_ID) |> summarise(path = paste(detention_facility, collapse = " -> "), n_stops = n()) |>
+  left_join(stays |> select(stay_ID, person), by = "stay_ID")
+paths |> group_by(path) |> summarise(people = n_distinct(person)) |> arrange(desc(people)) |> head(5) |>
   show_all()
 paths |> count(n_stops) |>
   show_all()
 ```
 
-- The single most common path is Baltimore hold room → Richwood Correctional Center (Monroe, La.): **360** people. Next is the Baltimore hold room alone, **358**.
-- Median: **3** stops. **21.7%** made five or more stops. That's higher than the 19.3% held in five or more *different* facilities, because stops count return visits.
+- The single most common path is Baltimore hold room → Richwood Correctional Center (Monroe, La.): **360** people. Next is the Baltimore hold room alone, **357**.
+- Median: **3** stops per stay. **21.7%** of stays had five or more stops. That's higher than the share held in five or more *different* facilities, because stops count return visits.
 
 The most common path with exactly five stops, and the people who took it:
 
@@ -828,12 +852,12 @@ stops |>
 trip <- stops |> filter(stay_ID %in% long_ids) |> group_by(stay_ID) |>
   summarise(days = as.numeric(difftime(max(book_out, na.rm = TRUE), min(book_in), units = "days")))
 who <- stays |> filter(stay_ID %in% long_ids) |> distinct(stay_ID, .keep_all = TRUE)
-tibble(people = length(long_ids), no_record = sum(who$apprehension_criminality == no_record_label),
+tibble(stays = length(long_ids), people = n_distinct(paths$person[paths$stay_ID %in% long_ids]), no_record = sum(who$apprehension_criminality == no_record_label),
        left_country = sum(who$departed), median_total_days = round(median(trip$days), 1)) |>
   show_all()
 ```
 
-- **25** people took exactly this path: Baltimore hold room → Caroline Detention Facility (Va.) → Richmond sub-office hold room (Va.) → Winn Correctional Center (La.) → Alexandria Staging Facility (La.).
+- **25** people (25 stays) took exactly this path: Baltimore hold room → Caroline Detention Facility (Va.) → Richmond sub-office hold room (Va.) → Winn Correctional Center (La.) → Alexandria Staging Facility (La.).
 - Median days at each stop: **1.1, 1.4, 0.3, 3.5, 0.9**. The whole trip took a median of **9.4** days.
 - **24** of the 25 left the country. **16** had no record. These are group numbers, so no one person's record is shown.
 
@@ -914,7 +938,7 @@ facility_coords <- read_csv("data/lookups/detention_facility_coordinates.csv", s
 md_stints |>
   left_join(stays |> distinct(stay_ID, apprehension_criminality), by = "stay_ID", relationship = "many-to-many") |>
   group_by(detention_facility, city, state) |>
-  summarise(people = n_distinct(stay_ID), people_no_record = n_distinct(stay_ID[apprehension_criminality == no_record_label]), .groups = "drop") |>
+  summarise(people = n_distinct(person), people_no_record = n_distinct(person[apprehension_criminality == no_record_label]), .groups = "drop") |>
   arrange(desc(people)) |> left_join(facility_coords, by = c("detention_facility", "city", "state")) |>
   write_csv("csv/facilities.csv")
 
